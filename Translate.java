@@ -45,16 +45,19 @@ public class Translate {
              ioe.printStackTrace();
         }
     }
-    //converte de binario para (inteiro)
+    /** converte de binario para (inteiro)
+      * Aceita uma string de tamanho arbitrário(4, 16, 42 caracteres)
+      * Os primeiros bits tem o menor valor;
+      */
     public int binTodec(String bin ) {
-        int val=0;
-        for(int i=31;i>-1;i--) {
-            if(bin.charAt(i) == '1') {
-                dec += 1;
+        int val = 0;
+        for(int i = 0; i < bin.length();i++) {
+            if(bin[i]) == '1') {
+                val | 1;
             }
-            val *= 2;
-       }
-       return val;
+            val = val << 1;
+        }
+        return val;
     }
     //gera as subs string
     void    setSubStrings( ) {
