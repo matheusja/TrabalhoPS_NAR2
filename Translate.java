@@ -30,69 +30,56 @@ public class Translate {
     public Translate( String local){
         String line;
         //abre o arquivo
-    try{
-          br = new BufferedReader(new FileReader(local));
-         while(br.ready()){
-            
-            line = br.readLine();
-            //concatena as linhas
-            str= str+line+'\n';
-            tm++;
-            
-             
-         }
-         br.close();
-      }catch(IOException ioe){
-         ioe.printStackTrace();
-      }
-      
-       
-  
-}
-    //converte de binario para dec
-    public  int binTodec(String bin ) {
- double dec = 0;
- int tam=0;
-   for(int i=31;i>-1;i--){
-       
-        if(bin.charAt(i) == '1'){
-            dec=dec+(Math.pow(2,tam));
-            }
-        tam++;
-   }
-    
-    return (int)dec;
+        try{
+              br = new BufferedReader(new FileReader(local));
+             while(br.ready()) {
+                line = br.readLine();
+                //concatena as linhas
+                str= str+line+'\n';
+                tm++;
 
-}
+
+             }
+             br.close();
+        }catch(IOException ioe){
+             ioe.printStackTrace();
+        }
+    }
+    //converte de binario para (inteiro)
+    public int binTodec(String bin ) {
+        int val=0;
+        for(int i=31;i>-1;i--) {
+            if(bin.charAt(i) == '1') {
+                dec += 1;
+            }
+            val *= 2;
+       }
+       return val;
+    }
     //gera as subs string
     void    setSubStrings( ) {
-    subStrins=new String[tm];
-    int x=0; 
-    for(int i=0;i<tm;i++){
-        subStrins[i]="";
-    }
-    
-   for(int j =0;j<str.length();j++){
-      
-       subStrins[x]+= str.charAt(j);
+        subStrins=new String[tm];
+        int x=0; 
+        for(int i=0;i<tm;i++){
+            subStrins[i]="";
+        }
+        for(int j =0;j<str.length();j++){
+            subStrins[x]+= str.charAt(j);
             if(str.charAt(j)=='\n'){
-      x++;
-      }       
+                x++;
+            }
          }
-   for(int i=0;i<tm;i++){
-   
-   }
+       for(int i=0;i<tm;i++){
+
+       }
    } 
     //retorna os valores em dec
-    public int[] convertReturn(){
-       decString= new int [tm];
-        for(int i=0;i<tm;i++){
-       decString[i]= binTodec(subStrins[i]);
+    public int[] convertReturn() {
+        decString= new int [tm];
+        for(int i=0;i<tm;i++) {
+            decString[i]= binTodec(subStrins[i]);
         }
         return decString;
     }
-    
-        
-        
-        }
+}
 
