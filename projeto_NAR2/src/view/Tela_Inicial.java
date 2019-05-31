@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +32,11 @@ public class Tela_Inicial extends javax.swing.JFrame {
      * Creates new form Tela_Inicial
      */
     public Tela_Inicial() {
+       Color minhaCor = new Color(100, 100, 100);
+        getContentPane().setBackground(minhaCor);
+        //Tela_Inicial.getContentPane().setBackground(Color.black);
         initComponents();
+       
     }
 
     /**
@@ -44,61 +49,67 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        JPanel_ini = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Cod_Read_JText = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         Cod_generated_JText = new javax.swing.JTextArea();
-        Cod_Read_JText = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         abrir_file_jb = new javax.swing.JButton();
-        Montar_jb = new javax.swing.JButton();
-        Avançar_jb = new javax.swing.JButton();
-        Retornar_jb = new javax.swing.JButton();
-        Executar_jb = new javax.swing.JButton();
         TabelaDeRegistradores = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Reg_jTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(123, 123, 123));
 
+        jTabbedPane1.setBackground(new java.awt.Color(123, 123, 123));
+        jTabbedPane1.setForeground(new java.awt.Color(177, 177, 177));
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        JPanel_ini.setBackground(new java.awt.Color(100, 100, 100));
+
+        jScrollPane3.setBackground(new java.awt.Color(123, 123, 123));
+
+        Cod_Read_JText.setEditable(false);
+        Cod_Read_JText.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_Read_JText.setColumns(20);
+        Cod_Read_JText.setRows(5);
+        jScrollPane3.setViewportView(Cod_Read_JText);
+
+        Cod_generated_JText.setEditable(false);
+        Cod_generated_JText.setBackground(new java.awt.Color(76, 76, 76));
         Cod_generated_JText.setColumns(20);
         Cod_generated_JText.setRows(5);
         jScrollPane1.setViewportView(Cod_generated_JText);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Cod_Read_JText, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(Cod_Read_JText, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+        javax.swing.GroupLayout JPanel_iniLayout = new javax.swing.GroupLayout(JPanel_ini);
+        JPanel_ini.setLayout(JPanel_iniLayout);
+        JPanel_iniLayout.setHorizontalGroup(
+            JPanel_iniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jTabbedPane1.addTab("Edit", jPanel1);
+        JPanel_iniLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 781, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 432, Short.MAX_VALUE)
+        JPanel_iniLayout.setVerticalGroup(
+            JPanel_iniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanel_iniLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Execute", jPanel2);
+        JPanel_iniLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
 
+        jTabbedPane1.addTab("Inicio", JPanel_ini);
+
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        abrir_file_jb.setBackground(new java.awt.Color(123, 123, 123));
+        abrir_file_jb.setForeground(new java.awt.Color(177, 177, 177));
         abrir_file_jb.setText("Abrir Arquivo");
         abrir_file_jb.setFocusable(false);
         abrir_file_jb.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -110,46 +121,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
         });
         jToolBar1.add(abrir_file_jb);
 
-        Montar_jb.setText("Montar");
-        Montar_jb.setFocusable(false);
-        Montar_jb.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Montar_jb.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(Montar_jb);
+        TabelaDeRegistradores.setBackground(new java.awt.Color(123, 123, 123));
+        TabelaDeRegistradores.setForeground(new java.awt.Color(177, 177, 177));
 
-        Avançar_jb.setText("Avançar");
-        Avançar_jb.setFocusable(false);
-        Avançar_jb.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Avançar_jb.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(Avançar_jb);
+        jScrollPane2.setBackground(new java.awt.Color(123, 123, 123));
+        jScrollPane2.setForeground(new java.awt.Color(177, 177, 177));
 
-        Retornar_jb.setText("Retornar");
-        Retornar_jb.setFocusable(false);
-        Retornar_jb.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Retornar_jb.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(Retornar_jb);
-
-        Executar_jb.setText("Executar");
-        Executar_jb.setFocusable(false);
-        Executar_jb.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Executar_jb.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(Executar_jb);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Reg_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -174,8 +153,26 @@ public class Tela_Inicial extends javax.swing.JFrame {
             new String [] {
                 "Name", "Number", "Value"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Reg_jTable.setSelectionBackground(new java.awt.Color(123, 123, 123));
+        Reg_jTable.setSelectionForeground(new java.awt.Color(123, 123, 123));
+        jScrollPane2.setViewportView(Reg_jTable);
+        if (Reg_jTable.getColumnModel().getColumnCount() > 0) {
+            Reg_jTable.getColumnModel().getColumn(0).setResizable(false);
+            Reg_jTable.getColumnModel().getColumn(0).setHeaderValue("Name");
+            Reg_jTable.getColumnModel().getColumn(1).setResizable(false);
+            Reg_jTable.getColumnModel().getColumn(1).setHeaderValue("Number");
+            Reg_jTable.getColumnModel().getColumn(2).setResizable(false);
+            Reg_jTable.getColumnModel().getColumn(2).setHeaderValue("Value");
+        }
 
         javax.swing.GroupLayout TabelaDeRegistradoresLayout = new javax.swing.GroupLayout(TabelaDeRegistradores);
         TabelaDeRegistradores.setLayout(TabelaDeRegistradoresLayout);
@@ -189,8 +186,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
         TabelaDeRegistradoresLayout.setVerticalGroup(
             TabelaDeRegistradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabelaDeRegistradoresLayout.createSequentialGroup()
-                .addGap(0, 37, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(332, 332, 332))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,8 +197,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -208,11 +207,15 @@ public class Tela_Inicial extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(346, 346, 346))))
         );
 
         pack();
@@ -241,7 +244,10 @@ public class Tela_Inicial extends javax.swing.JFrame {
             Logger.getLogger(Tela_Inicial.class.getName()).log(Level.SEVERE, null, ex);
         }
           Cod_Read_JText.setText(conteudo);
-    
+          JLabel file_name = new JLabel(arq.getName());
+          JPanel_ini.setName("teste");
+          
+          
     }//GEN-LAST:event_abrir_file_jbActionPerformed
 
     /**
@@ -280,20 +286,16 @@ public class Tela_Inicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Avançar_jb;
-    private javax.swing.JLabel Cod_Read_JText;
+    private javax.swing.JTextArea Cod_Read_JText;
     private javax.swing.JTextArea Cod_generated_JText;
-    private javax.swing.JButton Executar_jb;
-    private javax.swing.JButton Montar_jb;
-    private javax.swing.JButton Retornar_jb;
+    private javax.swing.JPanel JPanel_ini;
+    private javax.swing.JTable Reg_jTable;
     private javax.swing.JPanel TabelaDeRegistradores;
     private javax.swing.JButton abrir_file_jb;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
