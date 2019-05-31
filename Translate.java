@@ -3,16 +3,15 @@
 Classe recebe uma string com o local onde o arquivo fonte esta
 para começar a execução
 Retorna um vetor de inteiros convertidos para dec
+Chama a classe struct
  */
-package translate;
+package tanslate;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 
 /**
  *
- * @author Pablo
+ * @author Pablo Sanches
  */
 public class Translate {
 
@@ -24,7 +23,8 @@ public class Translate {
     private String subStrins[];
     //vator de inteiros
     private int decString[];
-
+ //estruturas divididas
+    private Struct stru[];
     //construtor onde recebe o arquivo a
     public Translate(String local) {
         str = local;
@@ -35,7 +35,7 @@ public class Translate {
             }
 
         }
-
+            setSubStrings();
     }
 
     public static int binToDecUnsigned(String bin) {
@@ -62,9 +62,10 @@ public class Translate {
 
     }
 
-    //gera as subs string
+    //gera as subs string e as estruturas
     void setSubStrings() {
         subStrins = new String[tm];
+       
         int x = 0;
         for (int i = 0; i < tm; i++) {
             subStrins[i] = "";
@@ -77,16 +78,27 @@ public class Translate {
                 subStrins[x] += str.charAt(j);
             }
         }
+       
     }
 
     //retorna os valores em dec
     public int[] convertReturn() {
-        setSubStrings();
+        
         decString = new int[tm];
         for (int i = 0; i < tm; i++) {
             decString[i] = binToDecSigned(subStrins[i]);
         }
         return decString;
+    }
+    void serStruct(){
+         stru=new Struct[tm];
+         for (int i = 0; i < tm; i++) {
+            stru[i]=new Struct(subStrins[i]);
+        }
+    }
+    public Struct[] getStruct(){
+        serStruct();
+        return stru;
     }
 
 }
