@@ -27,28 +27,28 @@ public class Struct {
              
                
            }   
-           void setOpcode(){
+        private   void setOpcode(){
                
                for(int i=0;i<8;i++){
                    op+= bin.charAt(i);
                }
                opcode=Translate.binToDecUnsigned(op);
            }
-            void setIndice(){
+          private  void setIndice(){
                
                for(int i=8;i<12;i++){
                    in+= bin.charAt(i);
                }
                indice=Translate.binToDecUnsigned(in);
            }
-             void setFlag(){
+          private  void setFlag(){
             
                for(int i=12;i<16;i++){
                    fla+= bin.charAt(i);
                }
                flags=Translate.binToDecUnsigned(fla);
            }
-              void setPar(){
+          private    void setPar(){
               
                for(int i=16;i<32;i++){
                    pa+= bin.charAt(i);
