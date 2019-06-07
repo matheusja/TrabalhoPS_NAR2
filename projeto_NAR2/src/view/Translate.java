@@ -100,5 +100,18 @@ public class Translate {
         serStruct();
         return stru;
     }
-
+    
+    //Retorna uma string ao inves de um vetor de inteiros
+ public String retunrStringConv(){
+     String convertString="";
+      decString = new int[tm];
+        for (int i = 0; i < tm; i++) {
+            decString[i] = binToDecSigned(subStrins[i]);
+        }
+      for(int i=0;i<decString.length;i++){
+            convertString+=decString[i];
+            convertString+="\n";
+        }
+     return convertString;
+ }
 }
