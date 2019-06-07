@@ -20,11 +20,12 @@ public class Struct {
     private String bin="";
            public  Struct(String local) {
                bin=local;
-             setOpcode();
-             setIndice();
-             setFlag();
-             setPar();
-            
+               setOpcode();
+               setIndice();
+               setFlag();
+               setPar();
+             
+               
            }   
            void setOpcode(){
                
@@ -55,35 +56,36 @@ public class Struct {
                parametro=Translate.binToDecSigned(pa);
            }
               public int getOpDec (){
-                  setOpcode();
+                 
                   return opcode;
               }
               public String getOpBin (){
-                  setOpcode();
+                  
                   return op;
               }
               public int getIndDec (){
-                  setIndice();
+                  
                   return indice;
               }
               public String getIndBin (){
-                  setIndice();
+                  
                   return in;
               }
               public int getFlagDec (){
-                  setFlag();
+                  
                   return flags;
               }
               public String getFlagBin (){
-                  setFlag();
+                  
                   return fla;
               }
               public int getPaDec (){
-                  setPar();
+                  
                   return parametro;
               }
               public String getPaBin (){
-                  setPar();
+                  
                   return pa;
               }
 }
+
