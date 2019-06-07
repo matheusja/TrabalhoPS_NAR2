@@ -62,7 +62,7 @@ public class Translate {
     }
 
     //gera as subs string e as estruturas
-    void setSubStrings() {
+   private void setSubStrings() {
         subStrins = new String[tm];
        
         int x = 0;
@@ -89,7 +89,7 @@ public class Translate {
         }
         return decString;
     }
-    void serStruct(){
+ private   void serStruct(){
          stru=new Struct[tm];
          for (int i = 0; i < tm; i++) {
             stru[i]=new Struct(subStrins[i]);
