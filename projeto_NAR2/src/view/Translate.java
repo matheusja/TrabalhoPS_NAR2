@@ -4,7 +4,7 @@ para começar a execução
 Retorna um vetor de inteiros convertidos para dec
 Chama a classe struct
  */
-package tanslate;
+package view;
 
 
 
