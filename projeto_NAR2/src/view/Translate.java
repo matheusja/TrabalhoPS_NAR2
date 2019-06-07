@@ -1,4 +1,3 @@
-
 /*
 Classe recebe uma string com o local onde o arquivo fonte esta
 para começar a execução
@@ -29,7 +28,7 @@ public class Translate {
     public Translate(String local) {
         str = local;
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '\n') {
+            if (str.charAt(i) == '\n'||str.charAt(i) == ' ') {
                 tm++;
 
             }
@@ -72,7 +71,7 @@ public class Translate {
         }
 
         for (int j = 0; j < str.length(); j++) {
-            if (str.charAt(j) == '\n') {
+            if (str.charAt(j) == '\n'||str.charAt(j) == ' ') {
                 x++;
             } else {
                 subStrins[x] += str.charAt(j);
