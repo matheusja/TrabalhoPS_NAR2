@@ -20,6 +20,11 @@ public class Struct {
     private String bin="";
            public  Struct(String local) {
                bin=local;
+             setOpcode();
+             setIndice();
+             setFlag();
+             setPar();
+            
            }   
            void setOpcode(){
                
