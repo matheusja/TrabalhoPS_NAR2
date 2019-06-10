@@ -64,20 +64,20 @@ public class ProcessadorDeMacros
                         }
                         else
                         {
-                            while(programArray.charAt(i) != ',' && programArray.charAt(i) != ' ')
+                            while(programArray.charAt(i) != ',' && !isWhiteSpace(programArray.charAt(i)))
                             {
                                 buildParameter += programArray.charAt(i);
                                 i++;
                             }
                             
                             listOfParameters.add(buildParameter);
+                            i = iterateWhiteSpace(programArray, i);
                         }
                     }
                     
                     
                     while(i <= programArray.length())
                     {
-                        iterateWhiteSpaces(programArray, i);
                         
                         String possibleParam = iterateMacroStrings(programArray, i);
                         
@@ -100,6 +100,10 @@ public class ProcessadorDeMacros
                     
                 }
             }
+        }  // Modo normal
+        else
+        {
+            
         }
         
         
@@ -107,9 +111,13 @@ public class ProcessadorDeMacros
         return programExpanded;
     }
     
-    int iterateWhiteSpaces(CharSequence cs, int index)
+    static bool isWhiteSpace(char c) {
+        return c == ' ' || c == '\t' || c == '\n' || c == '\r';
+    }
+    
+    static int iterateWhiteSpaces(CharSequence cs, int index)
     {
-        while(cs.charAt(index) == ' ')
+        while(isWhiteSpace(cs.charAt(index)))
         {
             index++;
         }
