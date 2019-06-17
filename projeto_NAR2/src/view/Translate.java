@@ -108,6 +108,7 @@ public class Translate {
         }
      return convertString;
  }
+    //Retorna uma string em binario recebendo um inteiro
  public static String decTobin (int num){
      String bin="",aux="";
     
@@ -128,22 +129,32 @@ public class Translate {
          }
      }while(exit != 1);
      aux+=Integer.toString(valor);
-      for(int i=0;i<33;i++){
-       if(i>aux.length()){
+     int tam=0;
+     for(int i=0;i<33;i++){
+         if((aux.length()+i)==32){
+             tam=i;
+         }
+     }
+          
+      for(int i=0;i<tam-1;i++){
+       
          aux+="0";
-         } if(neg==1){
-             if(i==32)
+          if(neg==1){
+             if(i==tam-2)
               bin+="1";
         }
     }
      for(int i=aux.length()-1;i>-1;i--){
          bin+=aux.charAt(i);
      }
-     
-    
-     
-     
-     
+ 
      return bin;
+ }
+ //Retorna uma instrução em  binario na forma de Struct recebendo um inteiro
+ public static Struct decToStruct(int num){
+     String bin;
+     bin=Translate.decTobin(num);
+     Struct stru= new Struct (bin);
+     return stru;
  }
 }
