@@ -140,10 +140,15 @@ public class Translate {
        
          aux+="0";
           if(neg==1){
-             if(i==tam-2)
+             if(i==tam-2){
               bin+="1";
         }
-    }
+    }else{
+              if(i==tam-2){
+              bin+="0";
+        }   
+          }
+      }
      for(int i=aux.length()-1;i>-1;i--){
          bin+=aux.charAt(i);
      }
