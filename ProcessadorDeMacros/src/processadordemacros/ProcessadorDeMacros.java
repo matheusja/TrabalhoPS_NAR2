@@ -20,30 +20,38 @@ public class ProcessadorDeMacros
         String programExpanded = "";
         char currentChar;
         StringBuilder buildProgram = new StringBuilder(program.length());
+        ArrayList<Macro> macros = new ArrayList<Macro>();
         
         int i = 0;
         
         while(i < programArray.length())
         {
+            i = ignoreComments(programArray, i);
             currentChar = programArray.charAt(i);
+            
+            //encontrando definiçao da macro
             if(currentChar == 'M')
-            {   //encontrando definiçao da macro
+            {   
                 if(programArray.charAt(i+1) == 'A' && programArray.charAt(i+2) == 'C'
                 && programArray.charAt(i+3) == 'R' && programArray.charAt(i+4) == 'O')
                 {
-                    i += 6;
-                    
+                    i += 5;
+                    i = ignoreComments(programArray, i);
                     i = iterateWhiteSpaces(programArray, i);
-                        
+                    i = ignoreComments(programArray, i);
+                    
+                    //Definindo nome da macro
                     String macroName = Character.toString(programArray.charAt(i));
                     
-                    while(programArray.charAt(++i) != ' ')
+                    while(programArray.charAt(++i) != ' ' && programArray.charAt(++i) != '(')
                     {
                         macroName += Character.toString(programArray.charAt(i));
                     }
                     
+                    //encontrando os parametros da macro
                     i = iterateWhiteSpaces(programArray, i);
-                      
+                    i = ignoreComments(programArray, i);
+                    
                     if(programArray.charAt(i) != '(' )
                     {
                         programExpanded = "Error";
@@ -55,7 +63,7 @@ public class ProcessadorDeMacros
                     while(programArray.charAt(i) != ')' )
                     {
                         i = iterateWhiteSpaces(programArray, i);
-                        
+                        i = ignoreComments(programArray, i);
                         String buildParameter = "";
                         
                         if(programArray.charAt(i) == ')')
@@ -64,33 +72,56 @@ public class ProcessadorDeMacros
                         }
                         else
                         {
-                            while(programArray.charAt(i) != ',' && !isWhiteSpace(programArray.charAt(i)))
+                            while(programArray.charAt(i) != ',' && programArray.charAt(i) != ' ')
                             {
                                 buildParameter += programArray.charAt(i);
                                 i++;
+                                i = ignoreComments(programArray, i);
                             }
                             
                             listOfParameters.add(buildParameter);
-                            i = iterateWhiteSpace(programArray, i);
                         }
                     }
                     
                     
+                    //Adicionando macro à lista de macros
+                    Macro macro = new Macro(macroName, listOfParameters);
+                    macros.add(macro);
+                    
+                    
                     while(i <= programArray.length())
                     {
-                        
+                        i = iterateWhiteSpaces(programArray, i);
+                        i = ignoreComments(programArray, i);
                         String possibleParam = iterateMacroStrings(programArray, i);
                         
+                        
                         i += possibleParam.length();
+                        i = ignoreComments(programArray, i);
+                        
+                        int numParam = 99999;
+                        boolean foundParam = false;
                         
                         for(String str: listOfParameters)
                         {
                             if(str.equals(possibleParam))
                             {
-                                int numOfParam = 1 + listOfParameters.indexOf(possibleParam);
+                                numParam = listOfParameters.indexOf(possibleParam);
+                                foundParam = true;
                                 break;
                             }
                         }
+                        
+                        if(foundParam)
+                        {
+                            buildProgram.append("$"+ numParam +" ");
+                        }
+                        else 
+                        {
+                            buildProgram.append(possibleParam + " ");
+                        }
+                            
+                        
                         
                         
                     }
@@ -100,10 +131,6 @@ public class ProcessadorDeMacros
                     
                 }
             }
-        }  // Modo normal
-        else
-        {
-            
         }
         
         
@@ -111,13 +138,9 @@ public class ProcessadorDeMacros
         return programExpanded;
     }
     
-    static bool isWhiteSpace(char c) {
-        return c == ' ' || c == '\t' || c == '\n' || c == '\r';
-    }
-    
-    static int iterateWhiteSpaces(CharSequence cs, int index)
+    int iterateWhiteSpaces(CharSequence cs, int index)
     {
-        while(isWhiteSpace(cs.charAt(index)))
+        while(cs.charAt(index) == ' ' || cs.charAt(index) == '\n')
         {
             index++;
         }
@@ -128,7 +151,8 @@ public class ProcessadorDeMacros
     {
         String buildString = "";
         
-        while(programArray.charAt(currentIndex) != ',' && programArray.charAt(currentIndex) != ' ')
+        while(programArray.charAt(currentIndex) != ',' && programArray.charAt(currentIndex) != ' '
+                && programArray.charAt(currentIndex) != '\n')
         {
             buildString += programArray.charAt(currentIndex);
             currentIndex++;
@@ -139,18 +163,18 @@ public class ProcessadorDeMacros
     
     
     
-    int iterateMacroStringsIndex(CharSequence programArray, int currentIndex)
-    {
+    
+    int ignoreComments(CharSequence programArray, int currentIndex){
         
-        while(programArray.charAt(currentIndex) != ',' && programArray.charAt(currentIndex) != ' ')
-        {
+        if(currentIndex == '#'){
             currentIndex++;
+            while(currentIndex != '#'){
+                currentIndex++;
+            }
+            
         }
-        
-        return currentIndex; 
+        return currentIndex;
     }
-    
-    
 
     public static void main(String[] args) 
     {
