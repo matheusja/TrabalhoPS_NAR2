@@ -1,9 +1,4 @@
-/*
-Classe recebe uma string com o local onde o arquivo fonte esta
-para começar a execução
-Retorna um vetor de inteiros convertidos para dec
-Chama a classe struct
- */
+
 package view;
 
 
@@ -64,7 +59,7 @@ public class Translate {
     //gera as subs string e as estruturas
    private void setSubStrings() {
         subStrins = new String[tm];
-       
+
         int x = 0;
         for (int i = 0; i < tm; i++) {
             subStrins[i] = "";
@@ -77,12 +72,12 @@ public class Translate {
                 subStrins[x] += str.charAt(j);
             }
         }
-       
+
     }
 
     //retorna os valores em dec
     public int[] convertReturn() {
-        
+
         decString = new int[tm];
         for (int i = 0; i < tm; i++) {
             decString[i] = binToDecSigned(subStrins[i]);
@@ -99,7 +94,7 @@ public class Translate {
         serStruct();
         return stru;
     }
-    
+
     //Retorna uma string ao inves de um vetor de inteiros
  public String retunrStringConv(){
      String convertString="";
@@ -112,5 +107,43 @@ public class Translate {
             convertString+="\n";
         }
      return convertString;
+ }
+ public static String decTobin (int num){
+     String bin="",aux="";
+    
+     int valor=num;
+     int resto;
+     int neg=0;
+     int exit=0;
+     if(valor<0){
+         neg=1;
+         valor=valor*(-1);
+     }
+     do{
+         resto=valor%2;
+         valor=valor/2;
+         aux+=Integer.toString(resto);
+         if(valor<2){
+             exit=1;
+         }
+     }while(exit != 1);
+     aux+=Integer.toString(valor);
+      for(int i=0;i<33;i++){
+       if(i>aux.length()){
+         aux+="0";
+         } if(neg==1){
+             if(i==32)
+              bin+="1";
+        }
+    }
+     for(int i=aux.length()-1;i>-1;i--){
+         bin+=aux.charAt(i);
+     }
+     
+    
+     
+     
+     
+     return bin;
  }
 }
