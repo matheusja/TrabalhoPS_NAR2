@@ -1,0 +1,10 @@
+MACRO teste1(arg1, arg2)
+  teste_RELATIVE: arg1
+  teste2()
+END_MACRO
+MACRO teste2(arg1)
+  teste_RELATIVE: arg1
+  teste_ABSOLUTO
+END_MACRO
+
+teste1(funfou, mesmo)
