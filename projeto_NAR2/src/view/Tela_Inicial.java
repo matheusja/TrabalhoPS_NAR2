@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -34,6 +35,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
     public Tela_Inicial() {
        Color minhaCor = new Color(100, 100, 100);
         getContentPane().setBackground(minhaCor);
+        ImageIcon icon = new ImageIcon("/home/aluno/Área de Trabalho/Filipe/TrabalhoPS_2/logo.png");
+        //Mostra_Logo.setIcon(icon);
         //Tela_Inicial.getContentPane().setBackground(Color.black);
         initComponents();
        
@@ -59,6 +62,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         TabelaDeRegistradores = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Reg_jTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(123, 123, 123));
@@ -191,6 +195,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
                 .addGap(332, 332, 332))
         );
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,8 +205,10 @@ public class Tela_Inicial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(0, 679, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -210,12 +219,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(346, 346, 346))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(596, 596, 596))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))))
         );
 
         pack();
@@ -226,7 +237,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();                                  // cria um objeto para abrir o arquivo
         fileChooser.setDialogTitle ("Selecione o Arquivo TXT a Ser Aberto");            // titulo da caixa de seleção de arquivo
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);                      // set para apenas arquivos
-        FileNameExtensionFilter filter = new FileNameExtensionFilter ("Texto","txt");   // configura o tipo de arquivo para aceitar apenas txt
+        FileNameExtensionFilter filter = new FileNameExtensionFilter ("Binary","bin");   // configura o tipo de arquivo para aceitar apenas txt
         fileChooser.setFileFilter(filter);                                              // aplica o filtro.
         fileChooser.showOpenDialog(this);
         File arq = fileChooser.getSelectedFile();                                 // pega o arquivo selecionado 
@@ -292,6 +303,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JTable Reg_jTable;
     private javax.swing.JPanel TabelaDeRegistradores;
     private javax.swing.JButton abrir_file_jb;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
