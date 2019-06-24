@@ -44,38 +44,38 @@ public class Maquina{
                 acc = - acc;
             break;
             //KON - performs logical AND with the parameter and the accumulator and stores the result in the accumulator
-            case 9:
+            case 14:
                 acc = acc & data;
             break;  
             //DIS  - performs logical OR with the parameter and the accumulator and stores the result in the accumulator
-            case 10:
+            case 15:
                 acc = acc | data;
             break;
             //NEG  - performs logical NOT on the content of the accumulator (ignores the parameter)
-            case 11:
+            case 16:
                 acc = ~acc;
             break;
             //POL  - shifts the bits of the accumulator to the left
-            case 12:
+            case 17:
                 acc = acc<<data;
             break;
             //POD  - shifts the bits of the accumulator to the right
-            case 13:
+            case 18:
                 acc = acc>>data;
             break;
             //NES - performs a conditional jump to the address specified by the parameter if the current value of the accumulator is negative
-            case 14:
+            case 19:
                 if(acc < 0){
                     //lembrando que ao sair dessa função será feito pc= pc+1
                     pc = data-1;
                 }
             break;
             //BES - performs an unconditional jump to the address specified by the parameter
-            case 15:
+            case 20:
                 pc = data-1;
             break;
             //NUS - performs a conditional jump to the address specified by the parameter if the current value of the accumulator is zero
-            case 16:
+            case 21:
                 if(acc == 0){
                     pc = data -1;
                 }
@@ -106,7 +106,11 @@ public class Maquina{
     }
     
     public void step(){
-        doInstruction(Translate.decToStruct(mem.get(pc)));
+        try {
+            doInstruction(Translate.decToStruct(mem.get(pc)));
+        } catch (ArrayIndexOutOfBoundsException ae) {
+            running = false;
+        }
         pc = pc+1;
     }
     
