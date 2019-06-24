@@ -7,9 +7,12 @@ package view;
 
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -33,12 +36,13 @@ public class Tela_Inicial extends javax.swing.JFrame {
      * Creates new form Tela_Inicial
      */
     public Tela_Inicial() {
-       Color minhaCor = new Color(100, 100, 100);
+        Color minhaCor = new Color(100, 100, 100);
         getContentPane().setBackground(minhaCor);
-        ImageIcon icon = new ImageIcon("/home/aluno/Área de Trabalho/Filipe/TrabalhoPS_2/logo.png");
+        //ImageIcon icon = new ImageIcon("/home/aluno/Área de Trabalho/Filipe/TrabalhoPS_2/logo.png");
         //Mostra_Logo.setIcon(icon);
         //Tela_Inicial.getContentPane().setBackground(Color.black);
         initComponents();
+        setIcon();
        
     }
 
@@ -59,12 +63,13 @@ public class Tela_Inicial extends javax.swing.JFrame {
         Cod_generated_JText = new javax.swing.JTextArea();
         jToolBar1 = new javax.swing.JToolBar();
         abrir_file_jb = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         TabelaDeRegistradores = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Reg_jTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PSAR 2");
         setBackground(new java.awt.Color(123, 123, 123));
 
         jTabbedPane1.setBackground(new java.awt.Color(123, 123, 123));
@@ -125,6 +130,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         });
         jToolBar1.add(abrir_file_jb);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
+
         TabelaDeRegistradores.setBackground(new java.awt.Color(123, 123, 123));
         TabelaDeRegistradores.setForeground(new java.awt.Color(177, 177, 177));
 
@@ -171,32 +178,24 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Reg_jTable);
         if (Reg_jTable.getColumnModel().getColumnCount() > 0) {
             Reg_jTable.getColumnModel().getColumn(0).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(0).setHeaderValue("Name");
             Reg_jTable.getColumnModel().getColumn(1).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(1).setHeaderValue("Number");
             Reg_jTable.getColumnModel().getColumn(2).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(2).setHeaderValue("Value");
         }
 
         javax.swing.GroupLayout TabelaDeRegistradoresLayout = new javax.swing.GroupLayout(TabelaDeRegistradores);
         TabelaDeRegistradores.setLayout(TabelaDeRegistradoresLayout);
         TabelaDeRegistradoresLayout.setHorizontalGroup(
             TabelaDeRegistradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TabelaDeRegistradoresLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabelaDeRegistradoresLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         TabelaDeRegistradoresLayout.setVerticalGroup(
             TabelaDeRegistradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabelaDeRegistradoresLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(TabelaDeRegistradoresLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(332, 332, 332))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,9 +205,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(0, 679, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 732, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -217,16 +216,16 @@ public class Tela_Inicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addGap(596, 596, 596))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))))
+                        .addGap(90, 90, 90))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1))))
         );
 
         pack();
@@ -241,24 +240,24 @@ public class Tela_Inicial extends javax.swing.JFrame {
         fileChooser.setFileFilter(filter);                                              // aplica o filtro.
         fileChooser.showOpenDialog(this);
         File arq = fileChooser.getSelectedFile();                                 // pega o arquivo selecionado 
-            
+         String conteudo ="";
+            // Parte que cria Pop-Up de aviso de arro na leitura do arquivo.
              if (arq == null){
                  JDialog aviso = new JDialog (Tela_Inicial, true);
-                 aviso.add (new JLabel ("Arquivo invalido ou vazio"));
+                 aviso.add (new JLabel ("  Não Foi Possivel Efetuar A Leitura Do Arquivo  "));
+                 aviso.setSize(315,60);
+                 aviso.setLocationRelativeTo(null);
                  aviso.setVisible(true);
-             }
-         
-          String conteudo ="";
-        try {
-            conteudo = FileUtils.readFileToString(arq);
-        } catch (IOException ex) {
-            Logger.getLogger(Tela_Inicial.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          Cod_Read_JText.setText(conteudo);
-          JLabel file_name = new JLabel(arq.getName());
-          JPanel_ini.setName("teste");
-          
-          
+             }else { 
+                 try {
+                    conteudo = FileUtils.readFileToString(arq);
+                 }catch (IOException ex) {
+                    Logger.getLogger(Tela_Inicial.class.getName()).log(Level.SEVERE, null, ex);
+                 }
+                 
+                Cod_Read_JText.setText(conteudo);
+                JLabel file_name = new JLabel(arq.getName());
+             }       
     }//GEN-LAST:event_abrir_file_jbActionPerformed
 
     /**
@@ -310,4 +309,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icone.png")));
+    }
 }
