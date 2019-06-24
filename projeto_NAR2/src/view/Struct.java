@@ -18,6 +18,8 @@ public class Struct {
     private int parametro;
     private String pa="";
     private String bin="";
+    private boolean P, R, I, N;
+    
            public  Struct(String local) {
                bin=local;
                setOpcode();
@@ -47,7 +49,24 @@ public class Struct {
                    fla+= bin.charAt(i);
                }
                flags=Translate.binToDecUnsigned(fla);
+               P = fla.charAt(0) == '1';
+               R = fla.charAt(1) == '1';
+               I = fla.charAt(2) == '1';
+               N = fla.charAt(3) == '1';
+               
            }
+          public boolean getFlagP() {
+              return P;
+          }
+          public boolean getFlagR() {
+              return R;
+          }
+          public boolean getFlagI() {
+              return I;
+          }
+          public boolean getFlagN() {
+              return N;
+          }
           private    void setPar(){
               
                for(int i=16;i<32;i++){
@@ -86,6 +105,9 @@ public class Struct {
               public String getPaBin (){
                   
                   return pa;
+              }
+              public boolean getisJump() {
+                  return false; // Implementar
               }
 }
 
