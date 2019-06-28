@@ -13,7 +13,8 @@ import java.util.ArrayList;
  */
 public class Macro {
     String name;
-    ArrayList<String> listOfParameters = new ArrayList<String>();
+    ArrayList<String> listOfParameters;// = new ArrayList<String>();
+    String macroCode;
     
     public Macro(String name, ArrayList listOfParameters){
         this.name = name;
@@ -26,5 +27,15 @@ public class Macro {
     
     ArrayList getParameters(){
         return listOfParameters;
+    }
+    
+    String getCode()
+    {
+        return macroCode;
+    }
+    
+    void setCode(String code)
+    {
+        this.macroCode = code;
     }
 }
