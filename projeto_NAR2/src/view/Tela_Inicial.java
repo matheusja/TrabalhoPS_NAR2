@@ -52,12 +52,15 @@ public class Tela_Inicial extends javax.swing.JFrame {
         Cod_Read_JText = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         Cod_generated_JText = new javax.swing.JTextArea();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
         jToolBar1 = new javax.swing.JToolBar();
         abrir_file_jb = new javax.swing.JButton();
-        TabelaDeRegistradores = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Reg_jTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(123, 123, 123));
@@ -86,12 +89,11 @@ public class Tela_Inicial extends javax.swing.JFrame {
         JPanel_ini.setLayout(JPanel_iniLayout);
         JPanel_iniLayout.setHorizontalGroup(
             JPanel_iniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(JPanel_iniLayout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
-
-        JPanel_iniLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
-
         JPanel_iniLayout.setVerticalGroup(
             JPanel_iniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanel_iniLayout.createSequentialGroup()
@@ -103,6 +105,10 @@ public class Tela_Inicial extends javax.swing.JFrame {
         JPanel_iniLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
 
         jTabbedPane1.addTab("Inicio", JPanel_ini);
+        jTabbedPane1.addTab("Expansão de Macros", jTabbedPane2);
+        jTabbedPane1.addTab("Código Montado", jTabbedPane3);
+        jTabbedPane1.addTab("Código Linkado", jTabbedPane4);
+        jTabbedPane1.addTab("Execução", jTabbedPane5);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -120,8 +126,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         });
         jToolBar1.add(abrir_file_jb);
 
-        TabelaDeRegistradores.setBackground(new java.awt.Color(123, 123, 123));
-        TabelaDeRegistradores.setForeground(new java.awt.Color(177, 177, 177));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         jScrollPane2.setBackground(new java.awt.Color(123, 123, 123));
         jScrollPane2.setForeground(new java.awt.Color(177, 177, 177));
@@ -154,7 +160,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -166,43 +172,23 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Reg_jTable);
         if (Reg_jTable.getColumnModel().getColumnCount() > 0) {
             Reg_jTable.getColumnModel().getColumn(0).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(0).setHeaderValue("Name");
             Reg_jTable.getColumnModel().getColumn(1).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(1).setHeaderValue("Number");
             Reg_jTable.getColumnModel().getColumn(2).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(2).setHeaderValue("Value");
         }
-
-        javax.swing.GroupLayout TabelaDeRegistradoresLayout = new javax.swing.GroupLayout(TabelaDeRegistradores);
-        TabelaDeRegistradores.setLayout(TabelaDeRegistradoresLayout);
-        TabelaDeRegistradoresLayout.setHorizontalGroup(
-            TabelaDeRegistradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TabelaDeRegistradoresLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        TabelaDeRegistradoresLayout.setVerticalGroup(
-            TabelaDeRegistradoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabelaDeRegistradoresLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(332, 332, 332))
-        );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 801, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 679, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -212,14 +198,15 @@ public class Tela_Inicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(TabelaDeRegistradores, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 424, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(596, 596, 596))
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90))))
         );
@@ -296,13 +283,16 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JTextArea Cod_generated_JText;
     private javax.swing.JPanel JPanel_ini;
     private javax.swing.JTable Reg_jTable;
-    private javax.swing.JPanel TabelaDeRegistradores;
     private javax.swing.JButton abrir_file_jb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
