@@ -52,10 +52,26 @@ public class Tela_Inicial extends javax.swing.JFrame {
         Cod_Read_JText = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         Cod_generated_JText = new javax.swing.JTextArea();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        Cod_Read_JText2 = new javax.swing.JTextArea();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        Cod_generated_JText2 = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        Cod_Read_JText3 = new javax.swing.JTextArea();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        Cod_generated_JText3 = new javax.swing.JTextArea();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        Cod_Read_JText4 = new javax.swing.JTextArea();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        Cod_generated_JText4 = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        Cod_Read_JText5 = new javax.swing.JTextArea();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        Cod_generated_JText5 = new javax.swing.JTextArea();
         jToolBar1 = new javax.swing.JToolBar();
         abrir_file_jb = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -105,10 +121,138 @@ public class Tela_Inicial extends javax.swing.JFrame {
         JPanel_iniLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane3});
 
         jTabbedPane1.addTab("Inicio", JPanel_ini);
-        jTabbedPane1.addTab("Expansão de Macros", jTabbedPane2);
-        jTabbedPane1.addTab("Código Montado", jTabbedPane3);
-        jTabbedPane1.addTab("Código Linkado", jTabbedPane4);
-        jTabbedPane1.addTab("Execução", jTabbedPane5);
+
+        jScrollPane7.setBackground(new java.awt.Color(123, 123, 123));
+
+        Cod_Read_JText2.setEditable(false);
+        Cod_Read_JText2.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_Read_JText2.setColumns(20);
+        Cod_Read_JText2.setRows(5);
+        jScrollPane7.setViewportView(Cod_Read_JText2);
+
+        Cod_generated_JText2.setEditable(false);
+        Cod_generated_JText2.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_generated_JText2.setColumns(20);
+        Cod_generated_JText2.setRows(5);
+        jScrollPane10.setViewportView(Cod_generated_JText2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane10)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("Expansão de Macros", jPanel1);
+
+        jScrollPane8.setBackground(new java.awt.Color(123, 123, 123));
+
+        Cod_Read_JText3.setEditable(false);
+        Cod_Read_JText3.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_Read_JText3.setColumns(20);
+        Cod_Read_JText3.setRows(5);
+        jScrollPane8.setViewportView(Cod_Read_JText3);
+
+        Cod_generated_JText3.setEditable(false);
+        Cod_generated_JText3.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_generated_JText3.setColumns(20);
+        Cod_generated_JText3.setRows(5);
+        jScrollPane11.setViewportView(Cod_generated_JText3);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane11)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("Código Montado", jPanel2);
+
+        jScrollPane9.setBackground(new java.awt.Color(123, 123, 123));
+
+        Cod_Read_JText4.setEditable(false);
+        Cod_Read_JText4.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_Read_JText4.setColumns(20);
+        Cod_Read_JText4.setRows(5);
+        jScrollPane9.setViewportView(Cod_Read_JText4);
+
+        Cod_generated_JText4.setEditable(false);
+        Cod_generated_JText4.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_generated_JText4.setColumns(20);
+        Cod_generated_JText4.setRows(5);
+        jScrollPane12.setViewportView(Cod_generated_JText4);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane12)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("Código Linkado", jPanel3);
+
+        jScrollPane13.setBackground(new java.awt.Color(123, 123, 123));
+
+        Cod_Read_JText5.setEditable(false);
+        Cod_Read_JText5.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_Read_JText5.setColumns(20);
+        Cod_Read_JText5.setRows(5);
+        jScrollPane13.setViewportView(Cod_Read_JText5);
+
+        Cod_generated_JText5.setEditable(false);
+        Cod_generated_JText5.setBackground(new java.awt.Color(76, 76, 76));
+        Cod_generated_JText5.setColumns(20);
+        Cod_generated_JText5.setRows(5);
+        jScrollPane14.setViewportView(Cod_generated_JText5);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane14)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("Execução", jPanel4);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -181,34 +325,33 @@ public class Tela_Inicial extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 679, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 584, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 424, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(596, 596, 596))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(596, 596, 596))
         );
 
         pack();
@@ -280,19 +423,35 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Cod_Read_JText;
+    private javax.swing.JTextArea Cod_Read_JText2;
+    private javax.swing.JTextArea Cod_Read_JText3;
+    private javax.swing.JTextArea Cod_Read_JText4;
+    private javax.swing.JTextArea Cod_Read_JText5;
     private javax.swing.JTextArea Cod_generated_JText;
+    private javax.swing.JTextArea Cod_generated_JText2;
+    private javax.swing.JTextArea Cod_generated_JText3;
+    private javax.swing.JTextArea Cod_generated_JText4;
+    private javax.swing.JTextArea Cod_generated_JText5;
     private javax.swing.JPanel JPanel_ini;
     private javax.swing.JTable Reg_jTable;
     private javax.swing.JButton abrir_file_jb;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }
