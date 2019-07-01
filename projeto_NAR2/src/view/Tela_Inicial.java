@@ -30,7 +30,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     public Tela_Inicial() {
        Color minhaCor = new Color(100, 100, 100);
         getContentPane().setBackground(minhaCor);
-        ImageIcon icon = new ImageIcon("/home/aluno/Área de Trabalho/Filipe/TrabalhoPS_2/logo.png");
+        ImageIcon icon = new ImageIcon("./logo.png");
         //Mostra_Logo.setIcon(icon);
         //Tela_Inicial.getContentPane().setBackground(Color.black);
         initComponents();
@@ -80,6 +80,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(123, 123, 123));
+        setPreferredSize(new java.awt.Dimension(1300, 800));
 
         jTabbedPane1.setBackground(new java.awt.Color(123, 123, 123));
         jTabbedPane1.setForeground(new java.awt.Color(177, 177, 177));
@@ -122,6 +123,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Inicio", JPanel_ini);
 
+        jPanel1.setBackground(new java.awt.Color(100, 100, 100));
+
         jScrollPane7.setBackground(new java.awt.Color(123, 123, 123));
 
         Cod_Read_JText2.setEditable(false);
@@ -154,6 +157,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Expansão de Macros", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(100, 100, 100));
 
         jScrollPane8.setBackground(new java.awt.Color(123, 123, 123));
 
@@ -188,6 +193,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Código Montado", jPanel2);
 
+        jPanel3.setBackground(new java.awt.Color(100, 100, 100));
+
         jScrollPane9.setBackground(new java.awt.Color(123, 123, 123));
 
         Cod_Read_JText4.setEditable(false);
@@ -220,6 +227,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Código Linkado", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(100, 100, 100));
 
         jScrollPane13.setBackground(new java.awt.Color(123, 123, 123));
 
@@ -271,41 +280,45 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jToolBar1.add(abrir_file_jb);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         jScrollPane2.setBackground(new java.awt.Color(123, 123, 123));
         jScrollPane2.setForeground(new java.awt.Color(177, 177, 177));
 
         Reg_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {"PC", null},
+                {"ACC", null},
+                {"X0", null},
+                {"X1", null},
+                {"X2", null},
+                {"X3", null},
+                {"X4", null},
+                {"X5", null},
+                {"X6", null},
+                {"X7", null},
+                {"X8", null},
+                {"X9", null},
+                {"X10", null},
+                {"X11", null},
+                {"X12", null},
+                {"X13", null},
+                {"X14", null},
+                {"X15", null}
             },
             new String [] {
-                "Name", "Number", "Value"
+                "Name", "Value"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, true
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -317,7 +330,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
         if (Reg_jTable.getColumnModel().getColumnCount() > 0) {
             Reg_jTable.getColumnModel().getColumn(0).setResizable(false);
             Reg_jTable.getColumnModel().getColumn(1).setResizable(false);
-            Reg_jTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -330,28 +342,28 @@ public class Tela_Inicial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 584, Short.MAX_VALUE))
+                .addGap(0, 798, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(596, 596, 596))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1169, 1169, 1169))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
