@@ -6,7 +6,13 @@ public class Maquina{
     private ArrayList<Integer> mem, regs;
     private int pc, acc;
     private boolean running = true;
-      
+    
+    public Maquina() {
+        mem = new ArrayList<>();
+        regs = new ArrayList<>();
+        pc = 0;
+        running = true;
+    }
     
     private void doInstruction(Struct s){
         int data = addressingMode(s);
