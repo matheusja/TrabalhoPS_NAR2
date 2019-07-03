@@ -2,3 +2,6 @@
 /projeto_NAR2/nbproject/private/
 /projeto_NAR2/build/
 /projeto_NAR2/dist/
+*.class
+/ProcessadorDeMacros/build/
+/ProcessadorDeMacros/dist/

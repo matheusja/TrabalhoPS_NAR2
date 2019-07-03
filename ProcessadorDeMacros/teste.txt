@@ -8,3 +8,4 @@ MACRO teste2(arg1)
 END_MACRO
 
 teste1(funfou, mesmo)
+
