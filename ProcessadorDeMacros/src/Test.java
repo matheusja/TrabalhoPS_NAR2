@@ -10,15 +10,18 @@
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import processadordemacros.ProcessadorMacros;
 
 public class Test {
-    public static void main(String[] args) throws IOException, Exception {
+    public static void main(String[] args) throws Exception {
+        test("teste.txt");
+        test("teste2.txt");
+    }
+    public static void test(String filename) throws Exception {
         String total = "";
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("teste.txt"));
+            reader = new BufferedReader(new FileReader(filename));
             String line = reader.readLine();
             total += line;
             while ((line = reader.readLine()) != null)

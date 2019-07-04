@@ -1,0 +1,11 @@
+MACRO definidor(def)
+MACRO definido
+def
+END_MACRO
+END_MACRO
+
+definidor(10)
+definido
+
+definidor(15)
+definido

@@ -35,7 +35,7 @@ public class ProcessadorMacros {
     private String processarInterno(String string) throws Exception {
         this.string = string;
         while (index < string.length()) {
-            if (stringStartsWith(MACRO_DECLARATION) && devoIgnorar(string.charAt(index + MACRO_DECLARATION.length()))) { // Declaracao
+            if (stringStartsWith(MACRO_DECLARATION) && (index + MACRO_DECLARATION.length() >= string.length() || devoIgnorar(string.charAt(index + MACRO_DECLARATION.length())))) { // Declaracao
                 index += MACRO_DECLARATION.length();
                 try {
                     ignorarEspacos(false);
@@ -51,8 +51,12 @@ public class ProcessadorMacros {
                         if (stringStartsWith(MACRO_END_DECLARATION)) {
                             index += MACRO_END_DECLARATION.length();
                             n_defs--;
+                            if (n_defs > 0) {
+                                macro_body += MACRO_END_DECLARATION;
+                            }
                         } else if (stringStartsWith(MACRO_DECLARATION)) {
                             index += MACRO_DECLARATION.length();
+                            macro_body += MACRO_DECLARATION;
                             n_defs++;
                         } else {
                             macro_body += string.charAt(index);
@@ -72,7 +76,7 @@ public class ProcessadorMacros {
                     if (i == macros.size()) {
                         macros.add(m);
                     }
-                } catch (ArrayIndexOutOfBoundsException ae) {
+                } catch (StringIndexOutOfBoundsException ae) {
                     throw new Exception("Final de arquivo inesperado");
                 }
                 continue;
