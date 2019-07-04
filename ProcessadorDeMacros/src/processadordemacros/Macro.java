@@ -21,7 +21,7 @@ public class Macro {
         this.nome = nome;
         this.parametros = parametros.size();
         String novaExpansao = ""; // Talvez seja o caso de usar um charSequence
-        for (int i = 0; i < expansao.length(); i++) { // Algoritmo O( |maior|*|menor|), aqui serve
+        for (int i = 0; i < expansao.length();) { // Algoritmo O( |maior|*|menor|), aqui serve
             try {
                 if (expansao.substring(i, i + MACRO_RELATIVE_DECLARATION.length()).equals(MACRO_RELATIVE_DECLARATION)) {
                     novaExpansao += "&"; // "endereco"
@@ -44,6 +44,7 @@ public class Macro {
             }
             if (j == parametros.size()) {
                 novaExpansao += expansao.charAt(i);
+                i++;
             }
         }
         this.expansao = novaExpansao;
@@ -54,11 +55,12 @@ public class Macro {
             throw new Exception("Esperava pelo menos " + parametros + " parametros, encontrei apenas" + param.size() + "\n");
         }
         String result = "";
-        for (int i = 0; i < expansao.length(); i++) {
+        for (int i = 0; i < expansao.length();) {
             char c = expansao.charAt(i);
             switch (c) {
                 case '&':
                     result += '&' + expasions;
+                    i++;
                     break;
                 case '$':
                     i++;
@@ -72,6 +74,7 @@ public class Macro {
                     break;
                 default:
                     result += c;
+                    i++;
                     break;
             }
         }
