@@ -20,6 +20,11 @@ public class Struct {
     private String bin="";
     private boolean P, R, I, N;
     
+        public Struct() {
+          P = R = I = N = false;
+          indice = 0;
+          opcode = 0;
+        }
            public  Struct(String local) {
                bin=local;
                setOpcode();
