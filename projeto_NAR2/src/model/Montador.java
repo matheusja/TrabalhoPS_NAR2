@@ -15,11 +15,16 @@ import java.util.Scanner;
 public class Montador 
 {
     
-    String code;
-    int index;
+    public static final String SPACE_DECL = "SPACE";
+    public static final String CONST_DECL = "CONST";
+    
+    
+    final private String code;
+    private int index;
     HashMap<String, Integer> instructions;
     
-    CodigoMontado codigoMontado;
+    final private CodigoMontado codigoMontado;
+    
     
     public Montador(String code) {
         this.code = code;
@@ -47,7 +52,24 @@ public class Montador
         while(index < code.length())
         {
             String currentToken = nextToken();
-            if (currentToken.equals(":")) {
+            Integer instruction = instructions.get(currentToken);
+            if (instruction != null) {
+                // Eh uma instrucao
+                // Os proximos tokens sao os argumentos
+                
+                // Incrementar PC
+                pc++;
+            } else if (SPACE_DECL.equals(currentToken)) {
+                // Proximo token é o número de espaços a serem reservados
+                // Observe que esse valor não é uma instrução
+                int space_size = Integer.parseInt(nextToken());
+                // Observe também que aqui o pc pode aumentar N, sendo N o tamanho reservado
+                pc += space_size;
+            } else if (CONST_DECL.equals(currentToken)) {
+                // Proximo token é o valor que esse espaço vai ocupar
+                // Observe que esse valor não é um
+                pc += 1;
+            } else if (currentToken.equals(":")) {
                 //pc--;
                 if (lastToken == null) {
                     throw new Exception("Simbolo sem nome");
@@ -58,12 +80,6 @@ public class Montador
                     codigoMontado.tabelaDeSimbolos.put(lastToken, pc);
                 }
             }
-            else
-            {
-                lastToken = currentToken;
-                pc++;
-            }
-            
         }
         
     }
