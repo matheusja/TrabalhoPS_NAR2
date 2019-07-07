@@ -1,8 +1,8 @@
-//*
+/*
  Class Struct recebe do tradutor uma string com tamanho 32 bits
 e as divide em opcode, indice, flags e parametros
  */
-package view;
+package model;
 
 /**
  *
