@@ -12,7 +12,7 @@ import java.util.HashMap;
  *
  * @author andrezdc
  */
-class CodigoMontado {
+public class CodigoMontado {
     public ArrayList<Integer> codigo;
     public ArrayList<Boolean> relativo;
     public ArrayList<Boolean> ehInstrucao;
