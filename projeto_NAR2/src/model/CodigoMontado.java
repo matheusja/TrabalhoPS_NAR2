@@ -15,12 +15,14 @@ import java.util.HashMap;
 class CodigoMontado {
     public ArrayList<Integer> codigo;
     public ArrayList<Boolean> relativo;
+    public ArrayList<Boolean> ehInstrucao;
     public HashMap<String, Integer> tabelaDeSimbolos;
     public HashMap<String, ArrayList<Integer>> tabelaDeUsos;
     
     public CodigoMontado() {
         codigo   = new ArrayList<>();
         relativo = new ArrayList<>();
+        ehInstrucao = new ArrayList<>();
         tabelaDeSimbolos = new HashMap<>();
         tabelaDeUsos = new HashMap<>();
     }
