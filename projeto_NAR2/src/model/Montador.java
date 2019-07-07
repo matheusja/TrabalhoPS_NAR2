@@ -70,6 +70,9 @@ public class Montador
     
     private String nextToken() {
         ignorarEspacos();
+        if (index >= code.length()) {
+            return ""; // essencialmente EOF
+        }
         String str = "";
         char c = code.charAt(index);
         if (c == ':') {
@@ -154,7 +157,7 @@ public class Montador
     
     private HashMap loadInstructions()
     {
-        HashMap<String, Integer> inst = new HashMap<String, Integer>();
+        HashMap<String, Integer> inst = new HashMap<>();
         
         int i = 0;
         
