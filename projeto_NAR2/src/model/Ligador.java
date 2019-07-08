@@ -71,9 +71,9 @@ public class Ligador {
 
     private static Integer correctVal(Integer value, int offset, Boolean isInstruction) {
         if (isInstruction) {
-            Struct s = Translate.decToStruct(value);
+            Instruction s = Translate.decToStruct(value);
             s.setParBin(s.getPaDec() + offset);
-            value = Translate.binToDecSigned(s.getInstru());
+            value = Translate.binToDecSigned(s.getInstructionString());
         } else {
             value += offset;
         }

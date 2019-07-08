@@ -18,7 +18,7 @@ public class Translate {
     //vator de inteiros
     private int decString[];
  //estruturas divididas
-    private Struct stru[];
+    private Instruction stru[];
     //construtor onde recebe o arquivo a
     public Translate(String local) {
         str = local;
@@ -85,12 +85,12 @@ public class Translate {
         return decString;
     }
  private   void serStruct(){
-         stru=new Struct[tm];
+         stru=new Instruction[tm];
          for (int i = 0; i < tm; i++) {
-            stru[i]=new Struct(subStrins[i]);
+            stru[i]=new Instruction(subStrins[i]);
         }
     }
-    public Struct[] getStruct(){
+    public Instruction[] getStruct(){
         serStruct();
         return stru;
     }
@@ -155,11 +155,11 @@ public class Translate {
  
      return bin;
  }
- //Retorna uma instrução em  binario na forma de Struct recebendo um inteiro
- public static Struct decToStruct(int num){
+ //Retorna uma instrução em  binario na forma de Instruction recebendo um inteiro
+ public static Instruction decToStruct(int num){
      String bin;
      bin=Translate.decTobin(num);
-     Struct stru= new Struct (bin);
+     Instruction stru= new Instruction (bin);
      return stru;
  }
 }

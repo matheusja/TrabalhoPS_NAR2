@@ -14,7 +14,7 @@ public class Maquina{
         running = true;
     }
     
-    private void doInstruction(Struct s){
+    private void doInstruction(Instruction s){
         int data = addressingMode(s);
         switch (s.getOpDec()){
             //MUA - loads the value into accumulator
@@ -93,7 +93,7 @@ public class Maquina{
         }        
     }
     
-    private int addressingMode(Struct s){
+    private int addressingMode(Instruction s){
           boolean P = s.getFlagP(), 
                   R = s.getFlagR(), 
                   N = s.getFlagN(),

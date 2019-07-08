@@ -5,8 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Montador
         codigoMontado = new CodigoMontado();
         instructions = loadInstructions();//new HashMap<String, Integer>();
         flags = loadFlags();
-        registers = loadRegistersIndex();
+        registers = loadRegistersIndexes();
     }
     
     private CodigoMontado montarInterno() throws Exception {
@@ -83,6 +83,8 @@ public class Montador
                 } else {
                     codigoMontado.tabelaDeSimbolos.put(lastToken, pc);
                 }
+            } else {
+                lastToken = currentToken;
             }
         }
         
@@ -144,38 +146,62 @@ public class Montador
             
             if(instructions.get(currentToken) != null)
             {
-                instructionInt = instructions.get(currentToken);
-                codigoMontado.codigo.add(instructionInt);
-            }
-            if ( flags.get( currentToken ) != null )
-            {
-                codigoMontado.codigo.add(flags.get(currentToken));
-            }
-            if ( registers.get( currentToken ) != null )
-            {
-                codigoMontado.codigo.add( registers.get( currentToken ) );
-            }
-            if ( CONST_DECL.equals( currentToken ) ) 
-            {
-                codigoMontado.codigo.add( nextToken() );
-            }
-            if (currentToken.equals(":")) {
-                //pc--;
-                if (lastToken == null) {
-                    throw new Exception("Simbolo sem nome");
+                Instruction inst = new Instruction();
+                inst.setOpBin(instructions.get(currentToken));
+                currentToken = nextToken();
+                if ( flags.get( currentToken ) != null )
+                {
+                    inst.setFlagBin(flags.get(currentToken));
+                    currentToken = nextToken();
                 }
-                if (codigoMontado.tabelaDeSimbolos.containsKey(lastToken)) {
-                    throw new Exception("Simbolo duplamente definido");
+                else
+                {
+                    inst.setFlagBin(0);
+                }
+                if (inst.getFlagP())
+                {
+                    if (registers.get(currentToken) != null)
+                    {
+                        codigoMontado.codigo.add( registers.get( currentToken ) );
+                    }
+                    else
+                    {
+                        throw new Exception("Erro: Esperava um registrador\n");
+                    }
+                }
+                currentToken = nextToken();
+                if (codigoMontado.tabelaDeSimbolos.containsKey(currentToken)) {
+                    inst.setParBin(codigoMontado.tabelaDeSimbolos.get(currentToken));
                 } else {
-                    codigoMontado.tabelaDeSimbolos.put(lastToken, pc);
+                    if (!codigoMontado.tabelaDeUsos.containsKey(currentToken)) {
+                        codigoMontado.tabelaDeUsos.put(currentToken, new ArrayList<>() );
+                    }
+                    codigoMontado.tabelaDeUsos.get(currentToken).add(codigoMontado.codigo.size());
+                    inst.setParBin(0);
+                }
+                codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
+                if (!inst.getFlagN() && !inst.getFlagR()) { // Relativo pois : 1. eh um valor imediato, 2. eh um valor que eh somado a PC
+                    codigoMontado.relativo.add(Boolean.FALSE);
                 }
             }
-            else
+            else if (SPACE_DECL.equals(currentToken))
             {
-                //lastToken = currentToken;
-                pc++;
+                int N;
+                String token = nextToken();
+                try {
+                    N = Integer.parseInt(token);
+                }
+                catch(NumberFormatException e) {
+                    throw new Exception("Numero invalido " + token);
+                }
+                for(int i = 0; i < N; i++) {
+                    codigoMontado.codigo.add(0);
+                }
             }
-            
+            else if (CONST_DECL.equals(currentToken)) 
+            {
+                codigoMontado.codigo.add(Integer.parseInt(nextToken()));
+            }
         }
         
         
@@ -223,8 +249,7 @@ public class Montador
     private HashMap loadFlags()
     {
         HashMap<String, Integer> flags = new HashMap<>();
-        
-        i = 1;
+        int i = 1;
         
         flags.put( "N", i++ );
         flags.put( "I", i++ );
@@ -241,19 +266,17 @@ public class Montador
         flags.put( "PRN", i++ );
         flags.put( "PRI", i++ );
         flags.put( "PRIN", i++ );
-        
+        return flags;
     }
     
     private HashMap loadRegistersIndexes()
     {
-        HashMap< String, Integer > regsIndex = new HashMap< String, Integer >();
+        HashMap< String, Integer > regsIndex = new HashMap<>();
         
         for( int i = 0; i < 16; i++ )
         {
             regsIndex.put( "X"+i, i);
         }
-        
-    }
-    
-    
+        return regsIndex;
+    }    
 }

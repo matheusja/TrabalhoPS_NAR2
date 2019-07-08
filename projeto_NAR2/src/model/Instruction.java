@@ -1,5 +1,5 @@
 /*
- Class Struct recebe do tradutor uma string com tamanho 32 bits
+ Class Instruction recebe do tradutor uma string com tamanho 32 bits
 e as divide em opcode, indice, flags e parametros
  */
 package model;
@@ -8,7 +8,7 @@ package model;
  *
  * @author Pablo Sanches
  */
-public class Struct {
+public class Instruction {
     private int opcode;
     private String op="";
     private int indice;
@@ -26,12 +26,12 @@ public class Struct {
     private boolean pBin,rBin,iBin,nBin;
     
     
-        public Struct() {
+        public Instruction() {
           P = R = I = N = false;
           indice = 0;
           opcode = 0;
         }
-           public  Struct(String local) {
+           public  Instruction(String local) {
                bin=local;
                setOpcode();
                setIndice();
@@ -195,7 +195,7 @@ public class Struct {
                   return parBin;
               }
               //retorna uma instrução
-               public String getInstru (){
+               public String getInstructionString (){
                   String inst="";
                   inst=parBin;
                   inst=inst+flagBin;
