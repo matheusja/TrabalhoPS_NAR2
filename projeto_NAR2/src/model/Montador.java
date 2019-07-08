@@ -158,11 +158,11 @@ public class Montador
                 {
                     inst.setFlagBin(0);
                 }
-                if (inst.getFlagP())
+                if (inst.getFlagP()) // Flag P requer um registrador
                 {
                     if (registers.get(currentToken) != null)
                     {
-                        codigoMontado.codigo.add( registers.get( currentToken ) );
+                        inst.setInBin(registers.get(currentToken));
                     }
                     else
                     {
@@ -170,18 +170,31 @@ public class Montador
                     }
                 }
                 currentToken = nextToken();
-                if (codigoMontado.tabelaDeSimbolos.containsKey(currentToken)) {
-                    inst.setParBin(codigoMontado.tabelaDeSimbolos.get(currentToken));
-                } else {
-                    if (!codigoMontado.tabelaDeUsos.containsKey(currentToken)) {
-                        codigoMontado.tabelaDeUsos.put(currentToken, new ArrayList<>() );
+                if (inst.getFlagN()) {
+                    String token = nextToken();
+                    try {
+                        inst.setParBin(Integer.parseInt(token));
+                    } catch(NumberFormatException //<editor-fold defaultstate="collapsed" desc="comment">
+                            nfe
+//</editor-fold>
+) {
+                        throw new Exception("Numero invalido " + token);
                     }
-                    codigoMontado.tabelaDeUsos.get(currentToken).add(codigoMontado.codigo.size());
-                    inst.setParBin(0);
-                }
-                codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
-                if (!inst.getFlagN() && !inst.getFlagR()) { // Relativo pois : 1. eh um valor imediato, 2. eh um valor que eh somado a PC
-                    codigoMontado.relativo.add(Boolean.FALSE);
+                } else {
+                    if (codigoMontado.tabelaDeSimbolos.containsKey(currentToken)) {
+                        inst.setParBin(codigoMontado.tabelaDeSimbolos.get(currentToken));
+                    } else  {
+                        if (!codigoMontado.tabelaDeUsos.containsKey(currentToken)) {
+                            codigoMontado.tabelaDeUsos.put(currentToken, new ArrayList<>() );
+                        }
+                        codigoMontado.tabelaDeUsos.get(currentToken).add(codigoMontado.codigo.size());
+                        inst.setParBin(0);
+                    }
+                    codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
+                    // Eh imediato se:
+                    //1. eh um valor imediato(dã)
+                    //2. eh um valor que eh somado a PC
+                    codigoMontado.relativo.add(!inst.getFlagN() && !inst.getFlagR());
                 }
             }
             else if (SPACE_DECL.equals(currentToken))
