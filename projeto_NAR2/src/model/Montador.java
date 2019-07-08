@@ -195,6 +195,7 @@ public class Montador
                     //1. eh um valor imediato(dã)
                     //2. eh um valor que eh somado a PC
                     codigoMontado.relativo.add(!inst.getFlagN() && !inst.getFlagR());
+                    codigoMontado.ehInstrucao.add(Boolean.TRUE);
                 }
             }
             else if (SPACE_DECL.equals(currentToken))
@@ -209,11 +210,15 @@ public class Montador
                 }
                 for(int i = 0; i < N; i++) {
                     codigoMontado.codigo.add(0);
+                    codigoMontado.ehInstrucao.add(Boolean.FALSE);
+                    codigoMontado.relativo.add(Boolean.FALSE);
                 }
             }
             else if (CONST_DECL.equals(currentToken)) 
             {
                 codigoMontado.codigo.add(Integer.parseInt(nextToken()));
+                codigoMontado.ehInstrucao.add(Boolean.FALSE);
+                codigoMontado.relativo.add(Boolean.FALSE);
             }
         }
         
