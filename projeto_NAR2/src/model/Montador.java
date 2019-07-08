@@ -22,6 +22,8 @@ public class Montador
     final private String code;
     private int index;
     HashMap<String, Integer> instructions;
+    HashMap<String, Integer> flags;
+    HashMap<String, Integer> registers;
     
     final private CodigoMontado codigoMontado;
     
@@ -31,6 +33,8 @@ public class Montador
         this.index = 0;
         codigoMontado = new CodigoMontado();
         instructions = loadInstructions();//new HashMap<String, Integer>();
+        flags = loadFlags();
+        registers = loadRegistersIndex();
     }
     
     private CodigoMontado montarInterno() throws Exception {
@@ -143,6 +147,18 @@ public class Montador
                 instructionInt = instructions.get(currentToken);
                 codigoMontado.codigo.add(instructionInt);
             }
+            if ( flags.get( currentToken ) != null )
+            {
+                codigoMontado.codigo.add(flags.get(currentToken));
+            }
+            if ( registers.get( currentToken ) != null )
+            {
+                codigoMontado.codigo.add( registers.get( currentToken ) );
+            }
+            if ( CONST_DECL.equals( currentToken ) ) 
+            {
+                codigoMontado.codigo.add( nextToken() );
+            }
             if (currentToken.equals(":")) {
                 //pc--;
                 if (lastToken == null) {
@@ -203,5 +219,41 @@ public class Montador
                 
         return inst;
     }
+    
+    private HashMap loadFlags()
+    {
+        HashMap<String, Integer> flags = new HashMap<>();
+        
+        i = 1;
+        
+        flags.put( "N", i++ );
+        flags.put( "I", i++ );
+        flags.put( "IN", i++ );
+        flags.put( "R", i++ );
+        flags.put( "RN", i++ );
+        flags.put( "RI", i++ );
+        flags.put( "RIN", i++ );
+        flags.put( "P", i++ );
+        flags.put( "PN", i++ );
+        flags.put( "PI", i++ );
+        flags.put( "PIN", i++ );
+        flags.put( "PR", i++ );
+        flags.put( "PRN", i++ );
+        flags.put( "PRI", i++ );
+        flags.put( "PRIN", i++ );
+        
+    }
+    
+    private HashMap loadRegistersIndexes()
+    {
+        HashMap< String, Integer > regsIndex = new HashMap< String, Integer >();
+        
+        for( int i = 0; i < 16; i++ )
+        {
+            regsIndex.put( "X"+i, i);
+        }
+        
+    }
+    
     
 }
