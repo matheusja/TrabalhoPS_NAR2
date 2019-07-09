@@ -80,6 +80,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         abrir_file_jb = new javax.swing.JButton();
         abrir_file_jb1 = new javax.swing.JButton();
+        abrir_file_jb2 = new javax.swing.JButton();
+        abrir_file_jb3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Reg_jTable = new javax.swing.JTable();
@@ -258,7 +260,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Execução", jPanel4);
@@ -291,6 +293,32 @@ public class Tela_Inicial extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(abrir_file_jb1);
+
+        abrir_file_jb2.setBackground(new java.awt.Color(123, 123, 123));
+        abrir_file_jb2.setForeground(new java.awt.Color(177, 177, 177));
+        abrir_file_jb2.setText("Executar");
+        abrir_file_jb2.setFocusable(false);
+        abrir_file_jb2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        abrir_file_jb2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        abrir_file_jb2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrir_file_jb2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(abrir_file_jb2);
+
+        abrir_file_jb3.setBackground(new java.awt.Color(123, 123, 123));
+        abrir_file_jb3.setForeground(new java.awt.Color(177, 177, 177));
+        abrir_file_jb3.setText("Um passo");
+        abrir_file_jb3.setFocusable(false);
+        abrir_file_jb3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        abrir_file_jb3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        abrir_file_jb3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                abrir_file_jb3ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(abrir_file_jb3);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
@@ -402,7 +430,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();                                  // cria um objeto para abrir o arquivo
         fileChooser.setDialogTitle ("Selecione o Arquivo TXT a Ser Aberto");            // titulo da caixa de seleção de arquivo
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);                      // set para apenas arquivos
-        FileNameExtensionFilter filter = new FileNameExtensionFilter ("PSAR Asesembly","*.pasm");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter ("PSAR Asesembly File",".pasm");
                                                                                         // configura o tipo de arquivo para aceitar apenas txt
         fileChooser.setFileFilter(filter);                                              // aplica o filtro.
         fileChooser.showOpenDialog(this);
@@ -450,6 +478,22 @@ public class Tela_Inicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
+    private void abrir_file_jb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_file_jb2ActionPerformed
+        // TODO add your handling code here:
+        turing.run();
+        atualizarDados();
+    }//GEN-LAST:event_abrir_file_jb2ActionPerformed
+
+    private void abrir_file_jb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrir_file_jb3ActionPerformed
+        // TODO add your handling code here:
+        turing.step();
+        atualizarDados();
+    }//GEN-LAST:event_abrir_file_jb3ActionPerformed
+
+    private void atualizarDados() {
+        // TODO: colocar código que atualiza a tablea de registradores
+        //Reg_jTable
+    }
     /**
      * @param args the command line arguments
      */
@@ -493,6 +537,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private javax.swing.JTable Reg_jTable;
     private javax.swing.JButton abrir_file_jb;
     private javax.swing.JButton abrir_file_jb1;
+    private javax.swing.JButton abrir_file_jb2;
+    private javax.swing.JButton abrir_file_jb3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -563,6 +609,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private void carregarCodigo() {
         turing = new Maquina();
         Carregador.carregar(turing, textFieldCodigoLinkado.getText());
+        atualizarDados();
     }
 }
 /*>>>>>>> 392493fa2d57565bae06362176e9f25f26b76064*/
