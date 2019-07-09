@@ -15,8 +15,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.Carregador;
 import model.CodigoMontado;
 import model.Ligador;
+import model.Maquina;
 import model.Montador;
 import model.ProcessadorMacros;
 import model.Translate;
@@ -440,7 +442,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
                     ligarCodigo();
                     break;
                 case 3:
-                    
+                    carregarCodigo();
                     break;
                 
             }
@@ -485,7 +487,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     private int stage;
     private CodigoMontado codigoMontado1;
     private CodigoMontado codigoMontado2;
-    
+    private Maquina turing;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel_ini;
     private javax.swing.JTable Reg_jTable;
@@ -542,7 +544,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     private void ligarCodigo() {
         try {
-            ArrayList<CodigoMontado> cods = new ArrayList<CodigoMontado>();
+            ArrayList<CodigoMontado> cods = new ArrayList<>();
             cods.add(codigoMontado1);
             cods.add(codigoMontado2);
             CodigoMontado f = Ligador.ligar(cods);
@@ -556,6 +558,11 @@ public class Tela_Inicial extends javax.swing.JFrame {
     
     private void errorMessageBox(String localizedMessage) {
         JOptionPane.showMessageDialog(null, localizedMessage, "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void carregarCodigo() {
+        turing = new Maquina();
+        Carregador.carregar(turing, textFieldCodigoLinkado.getText());
     }
 }
 /*>>>>>>> 392493fa2d57565bae06362176e9f25f26b76064*/

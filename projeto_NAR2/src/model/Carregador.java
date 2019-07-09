@@ -6,28 +6,16 @@
  */
 package model;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Carregador {
 
-    public static void carregar(Maquina m, String filename) throws IOException {
-        List<String> l = readFile(filename);
+    public static void carregar(Maquina m, String code) {
+        String[] l = code.split("\n");
         ArrayList<Integer> mem = m.getMem();
-        for (int i = 0; i < l.size(); i++) {
-            mem.add(Translate.binToDecSigned(l.get(i)));
+        for (int i = 0; i < l.length; i++) {
+            mem.add(Translate.binToDecSigned(l[i]));
             System.out.println(mem.get(i));
         }
     }
-
-    private static List readFile(String filename) throws IOException {
-        File directory = new File(filename);
-        List<String> allLines = Files.readAllLines(Paths.get(directory.getPath()));
-        return allLines;
-    }
-
 }
