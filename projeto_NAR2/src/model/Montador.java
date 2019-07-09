@@ -269,21 +269,21 @@ public class Montador
         HashMap<String, Integer> flags = new HashMap<>();
         int i = 1;
         
-        flags.put( "N", i++ );
-        flags.put( "I", i++ );
-        flags.put( "IN", i++ );
-        flags.put( "R", i++ );
-        flags.put( "RN", i++ );
-        flags.put( "RI", i++ );
-        flags.put( "RIN", i++ );
-        flags.put( "P", i++ );
-        flags.put( "PN", i++ );
-        flags.put( "PI", i++ );
-        flags.put( "PIN", i++ );
-        flags.put( "PR", i++ );
-        flags.put( "PRN", i++ );
-        flags.put( "PRI", i++ );
-        flags.put( "PRIN", i++ );
+        flags.put("N", i++);
+        flags.put("I", i++);
+        flags.put("IN", i++);
+        flags.put("R", i++);
+        flags.put("RN", i++);
+        flags.put("RI", i++);
+        flags.put("RIN", i++);
+        flags.put("P", i++);
+        flags.put("PN", i++);
+        flags.put("PI", i++);
+        flags.put("PIN", i++);
+        flags.put("PR", i++);
+        flags.put("PRN", i++);
+        flags.put("PRI", i++);
+        flags.put("PRIN", i++);
         return flags;
     }
     

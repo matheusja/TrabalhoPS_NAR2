@@ -62,7 +62,7 @@ public class Ligador {
         }
     }
     
-    public static CodigoMontado Ligar(ArrayList<CodigoMontado> codigos) throws Exception {
+    public static CodigoMontado ligar(ArrayList<CodigoMontado> codigos) throws Exception {
         Ligador l = new Ligador(codigos);
         l.passo1();
         l.passo2();
