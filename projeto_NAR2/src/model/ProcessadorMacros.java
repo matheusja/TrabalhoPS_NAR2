@@ -116,7 +116,7 @@ public class ProcessadorMacros {
         try {
             char c = string.charAt(index);
             while (devoIgnorar(c)) {
-                if (replicar) {
+                if (replicar && !comentario) {
                     resultado += c;
                 }
                 index++;
@@ -130,14 +130,14 @@ public class ProcessadorMacros {
     }
 
     private boolean devoIgnorar(char c) {
+        if (c == '#') {
+            comentario = true;
+        }
         if (comentario) {
             if (c == '\n') {
                 comentario = false;
             }
             return true;
-        }
-        if (c == '#') {
-            comentario = true;
         }
         return c == ' ' || c == '\t' || c == '\r' || c == '\n';
     }

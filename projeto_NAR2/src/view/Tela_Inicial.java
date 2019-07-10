@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Frame;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -11,7 +10,6 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -437,9 +435,11 @@ public class Tela_Inicial extends javax.swing.JFrame {
         File arq = fileChooser.getSelectedFile();                                        // pega o arquivo selecionado 
             
         if (arq == null){
-            JDialog aviso = new JDialog (Tela_Inicial, true);
+            // Essa mensagem mais atrapalha quando tu desiste de abrir um arquivo
+            /*JDialog aviso = new JDialog (Tela_Inicial, true);
             aviso.add (new JLabel ("Arquivo invalido ou vazio"));
-            aviso.setVisible(true);
+            aviso.setVisible(true);*/
+            return;
         }
          
         String conteudo ="";
@@ -471,6 +471,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
                     break;
                 case 3:
                     carregarCodigo();
+                    atualizarDados();
                     break;
                 
             }
@@ -492,7 +493,12 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
     private void atualizarDados() {
         // TODO: colocar código que atualiza a tablea de registradores
-        //Reg_jTable
+        Reg_jTable.setValueAt(turing.getPc(), 0, 1);
+        Reg_jTable.setValueAt(turing.getAcc(), 1, 1);
+        ArrayList<Integer> regs = turing.getRegs();
+        for (int i = 0; i < regs.size(); i++) {
+            Reg_jTable.setValueAt(turing.getRegs(), 2 + i, 1);
+        }
     }
     /**
      * @param args the command line arguments
@@ -522,10 +528,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tela_Inicial().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Tela_Inicial().setVisible(true);
         });
     }
     private int stage;
