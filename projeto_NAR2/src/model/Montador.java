@@ -15,8 +15,9 @@ import java.util.HashMap;
 public class Montador 
 {
     
-    public static final String SPACE_DECL = "SPACE";
-    public static final String CONST_DECL = "CONST";
+    public static final String  SPACE_DECL =  "SPACE";
+    public static final String  CONST_DECL =  "CONST";
+    public static final String NOARGS_DECL = "NOARGS";
     
     
     final private String code;
@@ -56,8 +57,7 @@ public class Montador
         while(index < code.length())
         {
             String currentToken = nextToken();
-            Integer instruction = instructions.get(currentToken);
-            if (instruction != null) {
+            if (instructions.get(currentToken) != null) {
                 // Eh uma instrucao
                 // Os proximos tokens sao os argumentos
                 
@@ -72,6 +72,7 @@ public class Montador
             } else if (CONST_DECL.equals(currentToken)) {
                 // Proximo token é o valor que esse espaço vai ocupar
                 // Observe que esse valor não é um
+                nextToken();
                 pc += 1;
             } else if (currentToken.equals(":")) {
                 //pc--;
@@ -163,13 +164,21 @@ public class Montador
                     if (registers.get(currentToken) != null)
                     {
                         inst.setInBin(registers.get(currentToken));
+                        currentToken = nextToken();
                     }
                     else
                     {
                         throw new Exception("Erro: Esperava um registrador\n");
                     }
+                } else {
+                    if (registers.get(currentToken) != null) // se os registradores não serão usados, é um erro acessar registradores em posições inválidas
+                    {
+                        inst.setInBin(registers.get(currentToken));
+                        currentToken = nextToken();
+                    } else {
+                        inst.setInBin(0);
+                    }
                 }
-                currentToken = nextToken();
                 if (inst.getFlagN()) {
                     String token = nextToken();
                     try {
@@ -181,15 +190,27 @@ public class Montador
                         throw new Exception("Numero invalido " + token);
                     }
                 } else {
+                    if (currentToken.equals(NOARGS_DECL)) {
+                        codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
+                        // Eh imediato se:
+                        //1. eh um valor imediato(dã)
+                        //2. eh um valor que eh somado a PC
+                        codigoMontado.relativo.add(Boolean.FALSE);
+                        codigoMontado.ehInstrucao.add(Boolean.TRUE);   
+                    }
+                    int val = 0;
+                    if (inst.getFlagR()) {
+                        val -= pc; // pc vai ser somado na hora que a maquina rodar
+                    }
                     if (codigoMontado.tabelaDeSimbolos.containsKey(currentToken)) {
-                        inst.setParBin(codigoMontado.tabelaDeSimbolos.get(currentToken));
+                        val += codigoMontado.tabelaDeSimbolos.get(currentToken);
                     } else  {
                         if (!codigoMontado.tabelaDeUsos.containsKey(currentToken)) {
                             codigoMontado.tabelaDeUsos.put(currentToken, new ArrayList<>() );
                         }
                         codigoMontado.tabelaDeUsos.get(currentToken).add(codigoMontado.codigo.size());
-                        inst.setParBin(0);
                     }
+                    inst.setParBin(val);
                     codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
                     // Eh imediato se:
                     //1. eh um valor imediato(dã)
@@ -219,6 +240,8 @@ public class Montador
                 codigoMontado.codigo.add(Integer.parseInt(nextToken()));
                 codigoMontado.ehInstrucao.add(Boolean.FALSE);
                 codigoMontado.relativo.add(Boolean.FALSE);
+            } else {
+                throw new Exception("Token desconhecido " + currentToken);
             }
         }
         
@@ -241,16 +264,17 @@ public class Montador
         inst.put("MUA",i++);
         inst.put("AUM",i++);
         inst.put("PIR",i++);
-        inst.put("SABF",i++);
+        inst.put("SAB",i++);
         inst.put("ODUF",i++);
         inst.put("MNOF",i++);
         inst.put("DELF",i++);
         inst.put("PZAF",i++);
-        inst.put("SAB",i++);
+        // Operações que não serão implementadas
+        /*inst.put("SAB",i++);
         inst.put("ODU",i++);
         inst.put("MNO",i++);
         inst.put("DEL",i++);
-        inst.put("PZA",i++);
+        inst.put("PZA",i++);*/
         inst.put("KON",i++);
         inst.put("DIS",i++);
         inst.put("NEG",i++);

@@ -9,6 +9,7 @@ teste + alfa
 END_MACRO
 END_MACRO
 
+definido(teste)
 definidor(beta)
 definido(teste)
 

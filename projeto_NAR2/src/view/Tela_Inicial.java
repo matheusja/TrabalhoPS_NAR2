@@ -458,24 +458,28 @@ public class Tela_Inicial extends javax.swing.JFrame {
         // TODO add your handling code here:
         javax.swing.JTabbedPane sourceTabbedPane = (javax.swing.JTabbedPane) evt.getSource();
         int index = sourceTabbedPane.getSelectedIndex();
-        while (stage < index) {
-            switch (stage) {
-                case 0:
-                    expandirMacros();
-                    break;
-                case 1:
-                    montarCodigo();
-                    break;
-                case 2:
-                    ligarCodigo();
-                    break;
-                case 3:
-                    carregarCodigo();
-                    atualizarDados();
-                    break;
-                
+        try {
+            while (stage < index) {
+                switch (stage) {
+                    case 0:
+                        expandirMacros();
+                        break;
+                    case 1:
+                        montarCodigo();
+                        break;
+                    case 2:
+                        ligarCodigo();
+                        break;
+                    case 3:
+                        carregarCodigo();
+                        atualizarDados();
+                        break;
+
+                }
+                stage++;
             }
-            stage++;
+        } catch(Exception e) {
+            
         }
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
@@ -607,7 +611,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
     }
     
     private void errorMessageBox(String localizedMessage) {
-        JOptionPane.showMessageDialog(null, localizedMessage, "Erro", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Erro", localizedMessage, JOptionPane.ERROR_MESSAGE);
     }
 
     private void carregarCodigo() {
