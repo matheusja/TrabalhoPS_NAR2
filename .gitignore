@@ -5,3 +5,6 @@
 *.class
 /ProcessadorDeMacros/build/
 /ProcessadorDeMacros/dist/
+/AnagramGame/nbproject/private/
+/TesteMontador/nbproject/private/
+/TesteMontador/build/

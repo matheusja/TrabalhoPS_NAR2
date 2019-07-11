@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Macro {
 
@@ -11,7 +10,7 @@ public class Macro {
     
     /* Os nomes dos parâmetros são irrelevantes*/
     public static final String MACRO_RELATIVE_DECLARATION = "_RELATIVE";
-    private static int expasions = 0;
+    private static int expansions = 0;
 
     public Macro(String nome, String expansao) {
         this(nome, expansao, new ArrayList<String>());
@@ -59,7 +58,7 @@ public class Macro {
             char c = expansao.charAt(i);
             switch (c) {
                 case '&':
-                    result += '&' + expasions;
+                    result += '&' + expansions;
                     i++;
                     break;
                 case '$':
@@ -78,11 +77,11 @@ public class Macro {
                     break;
             }
         }
-        expasions++;
+        expansions++;
         return result;
     }
     public static boolean isValidCharacter(char c) {
-        return isWhiteSpace(c) || c == ')';
+        return isWhiteSpace(c) || c == ')' || c == ':';
     }
     public static boolean isWhiteSpace(char c) {
         return c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '#';
