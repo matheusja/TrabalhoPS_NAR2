@@ -105,9 +105,6 @@ public class Montador
     }
     
     private String nextToken() {
-        if (index >= code.length()) {
-            return ""; // essencialmente EOF
-        }
         ignorarEspacos();
         if (index >= code.length()) {
             return ""; // essencialmente EOF
@@ -131,11 +128,9 @@ public class Montador
     }
     
     private void ignorarEspacos() {
-        while (index < code.length()) {
-            char c = code.charAt(index);
-            if(!ignoravel(c)) {
-                break;
-            }
+        char c = code.charAt(index);
+        while (index < code.length() && ignoravel(c)) {
+            index++;
             if (c == '#') {
                 // Comment
                 while(index < code.length() && c != '\n') {
@@ -143,7 +138,7 @@ public class Montador
                     c = code.charAt(index);
                 } 
             }
-            index++;
+            c = code.charAt(index);
         }
     }
     
@@ -164,14 +159,18 @@ public class Montador
         while(index < code.length())
         {
             String currentToken = nextToken();
-            if (currentToken == "") {
-                break;
-            }
+            
             
             if(instructions.get(currentToken) != null)
             {
                 Instruction inst = new Instruction();
                 inst.setOpBin(instructions.get(currentToken));
+                if(currentToken.equals("PZAF")) {
+                    codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
+                    codigoMontado.relativo.add(Boolean.FALSE);
+                    codigoMontado.ehInstrucao.add(Boolean.TRUE);
+                    continue;
+                }
                 currentToken = nextToken();
                 if ( flags.get( currentToken ) != null )
                 {
@@ -182,8 +181,8 @@ public class Montador
                 {
                     inst.setFlagBin(0);
                 }
-                if (inst.getFlagP()) // Flag P requer um registrador
-                {
+                if (inst.getFlagP() || inst.getOpDec() == 3) // Flag P requer um registrador
+                {   // Carregar um valor a um registrador
                     if (registers.get(currentToken) != null)
                     {
                         inst.setInBin(registers.get(currentToken));
@@ -213,14 +212,6 @@ public class Montador
                         throw new Exception("Numero invalido " + token);
                     }
                 } else {
-                    if (currentToken.equals(NOARGS_DECL)) {
-                        codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
-                        // Eh imediato se:
-                        //1. eh um valor imediato(dã)
-                        //2. eh um valor que eh somado a PC
-                        codigoMontado.relativo.add(Boolean.FALSE);
-                        codigoMontado.ehInstrucao.add(Boolean.TRUE);   
-                    }
                     int val = 0;
                     if (inst.getFlagR()) {
                         val -= pc; // pc vai ser somado na hora que a maquina rodar
@@ -285,29 +276,29 @@ public class Montador
         
         int i = 0;
         
-        inst.put("ZAR",i++);
-        inst.put("MUA",i++);
-        inst.put("AUM",i++);
-        inst.put("PIR",i++);
-        inst.put("SAB",i++);
-        inst.put("ODUF",i++);
-        inst.put("MNOF",i++);
-        inst.put("DELF",i++);
-        inst.put("PZAF",i++);
+        inst.put("ZAR",0);
+        inst.put("MUA",1);
+        inst.put("AUM",2);
+        inst.put("PIR",3);
+        inst.put("SAB",4);
+        inst.put("ODUF",5);
+        inst.put("MNOF",6);
+        inst.put("DELF",7);
+        inst.put("PZAF",8);
         // Operações que não serão implementadas
         /*inst.put("SAB",i++);
         inst.put("ODU",i++);
         inst.put("MNO",i++);
         inst.put("DEL",i++);
         inst.put("PZA",i++);*/
-        inst.put("KON",i++);
-        inst.put("DIS",i++);
-        inst.put("NEG",i++);
-        inst.put("POL",i++);
-        inst.put("POD",i++);
-        inst.put("NES",i++);
-        inst.put("BES",i++);
-        inst.put("NUS",i++);
+        inst.put("KON",9);
+        inst.put("DIS",10);
+        inst.put("NEG",11);
+        inst.put("POL",12);
+        inst.put("POD",13);
+        inst.put("NES",14);
+        inst.put("BES",15);
+        inst.put("NUS",16);
                                 
                 
         return inst;

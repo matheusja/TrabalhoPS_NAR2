@@ -175,7 +175,7 @@ public class Translate {
  //Retorna uma instrução em  binario na forma de Instruction recebendo um inteiro
  public static Instruction decToStruct(int num){
      String bin;
-     bin=Translate.decTobin(num);
+     bin=Translate.decTobin32(num);
      Instruction stru= new Instruction (bin);
      return stru;
  }

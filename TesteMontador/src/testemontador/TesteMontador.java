@@ -5,8 +5,8 @@
  */
 package testemontador;
 
-import model.CodigoMontado;
-import model.Montador;
+import java.util.ArrayList;
+import model.*;
 
 /**
  *
@@ -16,11 +16,11 @@ public class TesteMontador {
 
     
     static final String TESTE = 
-            "MUA  dividendo \n" +
+ /*           "MUA  dividendo \n" +
 "DELF divisor   \n" +
 "MNOF divisor   \n" +
-"ODUF dividendo \n" +
-"PZAF NOARGS    \n" +
+"ODUF dividendo \n" +*/
+"PZAF    \n" +
 "AUM  resto     \n" +
 "dividendo: CONST 20\n" +
 "divisor: CONST 10\n" +
@@ -32,7 +32,14 @@ public class TesteMontador {
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         CodigoMontado mnt = Montador.montar(TESTE);
-        System.out.println(mnt.toString());
+        String str = mnt.toString();
+        System.out.print(mnt.toString() + "\n\n\n");
+        ArrayList<CodigoMontado> mn = new ArrayList<>();
+        mn.add(mnt);
+        mnt = Ligador.ligar(mn);
+        System.out.print(mnt.toString() + "\n\n\n");
+        
+        
     }
     
 }
