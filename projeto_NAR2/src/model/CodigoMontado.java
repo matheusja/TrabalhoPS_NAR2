@@ -7,7 +7,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  *
@@ -31,7 +30,7 @@ public class CodigoMontado {
     @Override
     public String toString() {
         String result = "";
-        result = codigo.stream().map((cod) -> Translate.decTobin(cod) + "\n").reduce(result, String::concat);
+        result = codigo.stream().map((cod) -> Translate.decTobin32(cod) + "\n").reduce(result, String::concat);
         return result;
     }
 }

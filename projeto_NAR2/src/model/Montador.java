@@ -40,6 +40,7 @@ public class Montador
     
     private CodigoMontado montarInterno() throws Exception {
         passo1();
+        index = 0;
         passo2();
         
         return codigoMontado;
@@ -66,13 +67,25 @@ public class Montador
             } else if (SPACE_DECL.equals(currentToken)) {
                 // Proximo token é o número de espaços a serem reservados
                 // Observe que esse valor não é uma instrução
-                int space_size = Integer.parseInt(nextToken());
+                int space_size;
+                String t = nextToken();
+                try {
+                    space_size = Integer.parseInt(t);
+                } catch (NumberFormatException nfe) {
+                    throw new Exception("Esperava um numero apos " + SPACE_DECL + " encontrei " + t);
+                }
+                
                 // Observe também que aqui o pc pode aumentar N, sendo N o tamanho reservado
                 pc += space_size;
             } else if (CONST_DECL.equals(currentToken)) {
                 // Proximo token é o valor que esse espaço vai ocupar
                 // Observe que esse valor não é um
-                nextToken();
+                String t = nextToken();
+                try {
+                    Integer.parseInt(t);
+                } catch (NumberFormatException nfe) {
+                    throw new Exception("Esperava um numero apos " + CONST_DECL + " encontrei " + t);
+                }
                 pc += 1;
             } else if (currentToken.equals(":")) {
                 //pc--;
@@ -80,7 +93,7 @@ public class Montador
                     throw new Exception("Simbolo sem nome");
                 }
                 if (codigoMontado.tabelaDeSimbolos.containsKey(lastToken)) {
-                    throw new Exception("Simbolo duplamente definido");
+                    throw new Exception("Simbolo duplamente definido " + lastToken);
                 } else {
                     codigoMontado.tabelaDeSimbolos.put(lastToken, pc);
                 }
@@ -99,15 +112,16 @@ public class Montador
         String str = "";
         char c = code.charAt(index);
         if (c == ':') {
+            index++;
             return ":";
         }
         while (index < code.length() && !ignoravel(c)) {
-            if (c == ':') {
+            c = code.charAt(index);
+            if (c == ':' || ignoravel(c)) {
                 return str;
             }
             str += c;
             index++;
-            c = code.charAt(index);
         }
         
         return str; 
@@ -121,8 +135,10 @@ public class Montador
                 // Comment
                 while(index < code.length() && c != '\n') {
                     index++;
+                    c = code.charAt(index);
                 } 
             }
+            c = code.charAt(index);
         }
     }
     
@@ -241,7 +257,9 @@ public class Montador
                 codigoMontado.ehInstrucao.add(Boolean.FALSE);
                 codigoMontado.relativo.add(Boolean.FALSE);
             } else {
-                throw new Exception("Token desconhecido " + currentToken);
+                if (!nextToken().equals(":")) {
+                    throw new Exception("Token desconhecido " + currentToken);
+                }
             }
         }
         

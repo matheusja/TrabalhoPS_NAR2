@@ -155,6 +155,23 @@ public class Translate {
  
      return bin;
  }
+ static String decTobin32(int cod) {
+    String result = "";
+    if (cod < 0) {
+        result += "1";
+        cod = - cod;
+    } else {
+        result += "0";
+    }
+    for(int i = 1 << 30; i != 0; i = i >> 1) {
+        if ((cod & i) != 0) {
+            result += "1";
+        } else {
+            result += "0";
+        }
+    }
+    return result;
+ }
  //Retorna uma instrução em  binario na forma de Instruction recebendo um inteiro
  public static Instruction decToStruct(int num){
      String bin;
