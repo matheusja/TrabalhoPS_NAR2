@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Carregador;
@@ -109,13 +107,19 @@ public class Tela_Inicial extends javax.swing.JFrame {
         textFieldCodigoLido1.setEditable(false);
         textFieldCodigoLido1.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoLido1.setColumns(20);
+        textFieldCodigoLido1.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoLido1.setRows(5);
+        textFieldCodigoLido1.setCaretColor(new java.awt.Color(255, 255, 255));
+        textFieldCodigoLido1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(textFieldCodigoLido1);
 
         textFieldCodigoLido2.setEditable(false);
         textFieldCodigoLido2.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoLido2.setColumns(20);
+        textFieldCodigoLido2.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoLido2.setRows(5);
+        textFieldCodigoLido2.setCaretColor(new java.awt.Color(255, 255, 255));
+        textFieldCodigoLido2.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(textFieldCodigoLido2);
 
         javax.swing.GroupLayout JPanel_iniLayout = new javax.swing.GroupLayout(JPanel_ini);
@@ -146,12 +150,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
         textFieldCodigoExpandido1.setEditable(false);
         textFieldCodigoExpandido1.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoExpandido1.setColumns(20);
+        textFieldCodigoExpandido1.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoExpandido1.setRows(5);
         jScrollPane7.setViewportView(textFieldCodigoExpandido1);
 
         textFieldCodigoExpandido2.setEditable(false);
         textFieldCodigoExpandido2.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoExpandido2.setColumns(20);
+        textFieldCodigoExpandido2.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoExpandido2.setRows(5);
         jScrollPane10.setViewportView(textFieldCodigoExpandido2);
 
@@ -181,12 +187,14 @@ public class Tela_Inicial extends javax.swing.JFrame {
         textFieldCodigoMontado1.setEditable(false);
         textFieldCodigoMontado1.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoMontado1.setColumns(20);
+        textFieldCodigoMontado1.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoMontado1.setRows(5);
         jScrollPane8.setViewportView(textFieldCodigoMontado1);
 
         textFieldCodigoMontado2.setEditable(false);
         textFieldCodigoMontado2.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoMontado2.setColumns(20);
+        textFieldCodigoMontado2.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoMontado2.setRows(5);
         jScrollPane11.setViewportView(textFieldCodigoMontado2);
 
@@ -216,6 +224,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         textFieldCodigoLinkado.setEditable(false);
         textFieldCodigoLinkado.setBackground(new java.awt.Color(76, 76, 76));
         textFieldCodigoLinkado.setColumns(20);
+        textFieldCodigoLinkado.setForeground(new java.awt.Color(255, 255, 255));
         textFieldCodigoLinkado.setRows(5);
         jScrollPane9.setViewportView(textFieldCodigoLinkado);
 
@@ -428,9 +437,9 @@ public class Tela_Inicial extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();                                  // cria um objeto para abrir o arquivo
         fileChooser.setDialogTitle ("Selecione o Arquivo TXT a Ser Aberto");            // titulo da caixa de seleção de arquivo
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);                      // set para apenas arquivos
-        FileNameExtensionFilter filter = new FileNameExtensionFilter ("PSAR Asesembly File",".pasm");
+        //FileNameExtensionFilter filter = new FileNameExtensionFilter ("PSAR Asesembly File",".pasm");
                                                                                         // configura o tipo de arquivo para aceitar apenas txt
-        fileChooser.setFileFilter(filter);                                              // aplica o filtro.
+        //fileChooser.setFileFilter(filter);                                              // aplica o filtro.
         fileChooser.showOpenDialog(this);
         File arq = fileChooser.getSelectedFile();                                        // pega o arquivo selecionado 
             
@@ -594,7 +603,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
             textFieldCodigoMontado1.setText(codigoMontado1.toString());
             textFieldCodigoMontado2.setText(codigoMontado2.toString());
         } catch(Exception e) {
-            //errorMessageBox(e.getLocalizedMessage());
+            errorMessageBox(e.getLocalizedMessage());
             e.printStackTrace();
         }
     }
