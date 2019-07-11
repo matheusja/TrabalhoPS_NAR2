@@ -17,14 +17,14 @@ public class TesteMontador {
     
     static final String TESTE = 
             "MUA  dividendo \n" +
-            "DELF divisor   \n" +
-            "MNOF divisor   \n" +
-            "ODUF dividendo \n" +
-            "PZAF NOARGS    \n" +
-            "AUM  resto     \n" +
-            "dividendo: CONST 20\n" +
-            "divisor: CONST 10\n" +
-            "resto: SPACE 1";
+"DELF divisor   \n" +
+"MNOF divisor   \n" +
+"ODUF dividendo \n" +
+"PZAF NOARGS    \n" +
+"AUM  resto     \n" +
+"dividendo: CONST 20\n" +
+"divisor: CONST 10\n" +
+"resto: SPACE 1";
     /**
      * @param args the command line arguments
      * @throws java.lang.Exception

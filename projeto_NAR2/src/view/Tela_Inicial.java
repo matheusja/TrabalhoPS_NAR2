@@ -594,7 +594,8 @@ public class Tela_Inicial extends javax.swing.JFrame {
             textFieldCodigoMontado1.setText(codigoMontado1.toString());
             textFieldCodigoMontado2.setText(codigoMontado2.toString());
         } catch(Exception e) {
-            errorMessageBox(e.getLocalizedMessage());
+            //errorMessageBox(e.getLocalizedMessage());
+            e.printStackTrace();
         }
     }
 
