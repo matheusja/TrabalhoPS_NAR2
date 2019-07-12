@@ -38,21 +38,21 @@ public class Instruction {
            }   
         private   void setOpcode(){
                opBin = "";
-               for(int i=0;i<8;i++){
+               for(int i=24;i<32;i++){
                    opBin+= bin.charAt(i);
                }
                opcode=Translate.binToDecUnsigned(opBin);
            }
           private  void setIndice(){
                inBin = "";
-               for(int i=8;i<12;i++){
+               for(int i=20;i<24;i++){
                    inBin+= bin.charAt(i);
                }
                indice=Translate.binToDecUnsigned(inBin);
            }
           private  void setFlag(){
                flagBin = "";
-               for(int i=12;i<16;i++){
+               for(int i=16;i<20;i++){
                    flagBin+= bin.charAt(i);
                }
                flags=Translate.binToDecUnsigned(flagBin);
@@ -76,7 +76,7 @@ public class Instruction {
           }
           private    void setPar(){
                parBin="";
-               for(int i=16;i<32;i++){
+               for(int i=0;i<16;i++){
                    parBin+= bin.charAt(i);
                }
                parametro=Translate.binToDecSigned(parBin);

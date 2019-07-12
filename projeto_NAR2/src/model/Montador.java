@@ -161,7 +161,7 @@ public class Montador
         while(index < code.length())
         {
             String currentToken = nextToken();
-            if (currentToken == "") {
+            if (currentToken.equals("")) {
                 break;
             }
             

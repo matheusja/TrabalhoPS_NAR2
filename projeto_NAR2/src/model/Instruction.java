@@ -10,13 +10,9 @@ package model;
  */
 public class Instruction {
     private int opcode;
-    private String op="";
     private int indice;
-    private String in="";
     private int flags;
-    private String fla="";
     private int parametro;
-    private String pa="";
     private String bin="";
     private boolean P, R, I, N;
     private String parBin;
@@ -41,29 +37,29 @@ public class Instruction {
                
            }   
         private   void setOpcode(){
-               
-               for(int i=0;i<8;i++){
-                   op+= bin.charAt(i);
+               opBin = "";
+               for(int i=24;i<32;i++){
+                   opBin+= bin.charAt(i);
                }
-               opcode=Translate.binToDecUnsigned(op);
+               opcode=Translate.binToDecUnsigned(opBin);
            }
           private  void setIndice(){
-               
-               for(int i=8;i<12;i++){
-                   in+= bin.charAt(i);
+               inBin = "";
+               for(int i=20;i<24;i++){
+                   inBin+= bin.charAt(i);
                }
-               indice=Translate.binToDecUnsigned(in);
+               indice=Translate.binToDecUnsigned(inBin);
            }
           private  void setFlag(){
-            
-               for(int i=12;i<16;i++){
-                   fla+= bin.charAt(i);
+               flagBin = "";
+               for(int i=16;i<20;i++){
+                   flagBin+= bin.charAt(i);
                }
-               flags=Translate.binToDecUnsigned(fla);
-               P = fla.charAt(0) == '1';
-               R = fla.charAt(1) == '1';
-               I = fla.charAt(2) == '1';
-               N = fla.charAt(3) == '1';
+               flags=Translate.binToDecUnsigned(flagBin);
+               P = flagBin.charAt(0) == '1';
+               R = flagBin.charAt(1) == '1';
+               I = flagBin.charAt(2) == '1';
+               N = flagBin.charAt(3) == '1';
                
            }
           public boolean getFlagP() {
@@ -79,11 +75,11 @@ public class Instruction {
               return N;
           }
           private    void setPar(){
-              
-               for(int i=16;i<32;i++){
-                   pa+= bin.charAt(i);
+               parBin="";
+               for(int i=0;i<16;i++){
+                   parBin+= bin.charAt(i);
                }
-               parametro=Translate.binToDecSigned(pa);
+               parametro=Translate.binToDecSigned(parBin);
            }
           //set os paraetros par atraves de um inteiro
           public void setParBin(int n) {
@@ -107,7 +103,7 @@ public class Instruction {
               }
               public String getOpBin (){
                   
-                  return op;
+                  return opBin;
               }
               public int getIndDec (){
                   
@@ -115,7 +111,7 @@ public class Instruction {
               }
               public String getIndBin (){
                   
-                  return in;
+                  return inBin;
               }
               public int getFlagDec (){
                   
@@ -123,7 +119,7 @@ public class Instruction {
               }
               public String getFlagBin (){
                   
-                  return fla;
+                  return flagBin;
               }
               public int getPaDec (){
                   
@@ -131,7 +127,7 @@ public class Instruction {
               }
               public String getPaBin (){
                   
-                  return pa;
+                  return parBin;
               }
               public boolean getisJump() {
                   return false; // Implementar
@@ -155,7 +151,7 @@ public class Instruction {
               }
               //retorna uma instrução
                public String getInstructionString (){
-                  String inst="";
+                  String inst;
                   inst=parBin;
                   inst=inst+flagBin;
                   inst=inst+inBin;

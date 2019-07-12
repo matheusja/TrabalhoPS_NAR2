@@ -122,7 +122,7 @@ public class Translate {
      }
      do{
          resto=valor%2;
-         valor=valor/2;
+         valor=valor >> 1;
          aux+=Integer.toString(resto);
          if(valor<2){
              exit=1;
