@@ -15,7 +15,7 @@ public class Carregador {
         ArrayList<Integer> mem = m.getMem();
         for (int i = 0; i < l.length; i++) {
             mem.add(Translate.binToDecSigned(l[i]));
-            System.out.println(mem.get(i));
+            //System.out.println(mem.get(i));
         }
     }
 }

@@ -7,7 +7,7 @@ label: SPACE 1
 END_MACRO
 
 
-DECLARE_CONST(dividendo, 20)
-DECLARE_CONST(divisor, 10)
+DECLARE_CONST(dividendo, 15)
+DECLARE_CONST(divisor, 7)
 DECLARE_VAR(resto)
 
