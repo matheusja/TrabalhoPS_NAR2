@@ -39,25 +39,27 @@ public class Ligador {
     
     private void passo2() throws Exception { //
         offset = 0;
-        codigos.forEach((cod) -> {
+        for (CodigoMontado cod : codigos) {
             for(int i = 0; i < cod.codigo.size(); i++) {
                 Integer value = cod.codigo.get(i);
                 if (cod.relativo.get(i)) {
                     value = correctVal(value, offset, cod.ehInstrucao.get(i));
                 }
-                codigoLinkado.codigo.add(value);
+                codigoLinkado.codigo.add(value);   
             }
-        });
+            codigoLinkado.ehInstrucao.addAll(cod.ehInstrucao);
+            codigoLinkado.relativo.addAll(cod.relativo);
+        }
         for (String simbolo : codigoLinkado.tabelaDeUsos.keySet()) {
             if (!codigoLinkado.tabelaDeSimbolos.containsKey(simbolo)) {
                 throw new Exception("Erro: simbolo nao definido " + simbolo);
             }
             Integer changeVal = codigoLinkado.tabelaDeSimbolos.get(simbolo);
-            codigoLinkado.tabelaDeUsos.get(simbolo).forEach((n) -> {
+            for (Integer n : codigoLinkado.tabelaDeUsos.get(simbolo)) {
                 Integer value = codigoLinkado.codigo.get(n);
                 value = correctVal(value, changeVal, codigoLinkado.ehInstrucao.get(n));
                 codigoLinkado.codigo.add(n, value);
-            });
+            }
         }
     }
     

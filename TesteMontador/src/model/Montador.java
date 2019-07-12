@@ -128,9 +128,11 @@ public class Montador
     }
     
     private void ignorarEspacos() {
-        char c = code.charAt(index);
-        while (index < code.length() && ignoravel(c)) {
-            index++;
+        while (index < code.length()) {
+            char c = code.charAt(index);
+            if (!ignoravel(c)) {
+                break;
+            }
             if (c == '#') {
                 // Comment
                 while(index < code.length() && c != '\n') {
@@ -138,7 +140,7 @@ public class Montador
                     c = code.charAt(index);
                 } 
             }
-            c = code.charAt(index);
+            index++;
         }
     }
     
@@ -159,7 +161,9 @@ public class Montador
         while(index < code.length())
         {
             String currentToken = nextToken();
-            
+            if (currentToken == "") {
+                break;
+            }
             
             if(instructions.get(currentToken) != null)
             {

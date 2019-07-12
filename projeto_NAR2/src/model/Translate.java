@@ -8,7 +8,6 @@ package model;
  * @author Pablo Sanches
  */
 public class Translate {
-
     //String onde vai ser armazenada o arquivo
     private String str = "";
     //tamanho de linhas do arquivo
@@ -45,6 +44,7 @@ public class Translate {
 
         return (int) dec;
     }
+    
 
     //converte de binario para dec
     public static int binToDecSigned(String bin) {
@@ -164,6 +164,17 @@ public class Translate {
         result += "0";
     }
     for(int i = 1 << 30; i != 0; i = i >> 1) {
+        if ((cod & i) != 0) {
+            result += "1";
+        } else {
+            result += "0";
+        }
+    }
+    return result;
+ }
+ static String decTobinN(int cod, int N) {
+    String result = "";
+    for(int i = 1 << (N - 1); i != 0; i = i >> 1) {
         if ((cod & i) != 0) {
             result += "1";
         } else {

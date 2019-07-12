@@ -30,7 +30,9 @@ public class CodigoMontado {
     @Override
     public String toString() {
         String result = "";
-        result = codigo.stream().map((cod) -> Translate.decTobin32(cod) + "\n").reduce(result, String::concat);
+        for(Integer n : codigo) {
+            result += Translate.decTobin32(n) + "\n";
+        }
         return result;
     }
 }

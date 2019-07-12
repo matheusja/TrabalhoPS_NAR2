@@ -15,15 +15,10 @@ import model.*;
 public class TesteMontador {
 
     
-    static final String TESTE = 
- /*           "MUA  dividendo \n" +
-"DELF divisor   \n" +
-"MNOF divisor   \n" +
-"ODUF dividendo \n" +*/
+    static final String TESTE1 = 
 "PZAF    \n" +
-"AUM  resto     \n" +
-"dividendo: CONST 20\n" +
-"divisor: CONST 10\n" +
+"AUM  resto     \n";
+    static final String TESTE2 =
 "resto: SPACE 1";
     /**
      * @param args the command line arguments
@@ -31,15 +26,13 @@ public class TesteMontador {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        CodigoMontado mnt = Montador.montar(TESTE);
-        String str = mnt.toString();
-        System.out.print(mnt.toString() + "\n\n\n");
-        ArrayList<CodigoMontado> mn = new ArrayList<>();
-        mn.add(mnt);
-        mnt = Ligador.ligar(mn);
-        System.out.print(mnt.toString() + "\n\n\n");
-        
-        
+        ArrayList<CodigoMontado> mnt = new ArrayList<>();
+        CodigoMontado result = Montador.montar(TESTE1);
+        mnt.add(result);
+        result = Montador.montar(TESTE2);
+        mnt.add(result);
+        result = Ligador.ligar(mnt);
+        System.out.print(result.toString() + "\n\n");
     }
     
 }

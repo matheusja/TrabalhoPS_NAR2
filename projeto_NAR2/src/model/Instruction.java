@@ -87,60 +87,19 @@ public class Instruction {
            }
           //set os paraetros par atraves de um inteiro
           public void setParBin(int n) {
-              String aux;
-              aux=Translate.decTobin(n);
-              parBin="";
-              for(int i=31;i>15;i--){
-              parBin+=aux.charAt(i);
-              }
-              
+              parBin=Translate.decTobinN(n, 16);
           }
           //set os opcode par atraves de um inteiro
           public void setOpBin(int n) {
-              opBin="";
-             String aux;
-              aux=Translate.decTobin(n);
-              for(int i=31;i>23;i--){
-                 opBin+=aux.charAt(i);
-              }
+              opBin=Translate.decTobinN(n, 8);
           }
           //set os indice par atraves de um inteiro
           public void setInBin(int n) {
-              inBin="";
-              String aux;
-              aux=Translate.decTobin(n);
-              for(int i=31;i>27;i--){
-                 inBin+=aux.charAt(i);
-              }
+              inBin=Translate.decTobinN(n, 4);
           }
           //set a flag par atraves de um inteiro
           public void setFlagBin(int n) {
-              flagBin="";
-              String aux;
-              aux=Translate.decTobin(n);
-                for(int i=31;i>27;i--){
-                   flagBin +=aux.charAt(i);
-                }
-              switch(n) {
-        case 0:
-        P = R = I = N = false;
-        break;
-        case 1:
-            P =true;
-        break;
-        case 2:
-            R=true;
-        break;
-       case 3:
-           I=true;
-        break;
-         case 4:
-           N=true;
-        break;
-    
-  
-    
-}
+              flagBin=Translate.decTobinN(n, 4);
           }
               public int getOpDec (){
                  
