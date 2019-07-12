@@ -509,7 +509,7 @@ public class Tela_Inicial extends javax.swing.JFrame {
         Reg_jTable.setValueAt(turing.getAcc(), 1, 1);
         ArrayList<Integer> regs = turing.getRegs();
         for (int i = 0; i < regs.size(); i++) {
-            Reg_jTable.setValueAt(turing.getRegs(), 2 + i, 1);
+            Reg_jTable.setValueAt(regs.get(i), 2 + i, 1);
         }
     }
     /**

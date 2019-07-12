@@ -10,6 +10,9 @@ public class Maquina{
     public Maquina() {
         mem = new ArrayList<>();
         regs = new ArrayList<>();
+        for(int i = 0; i < 16; i++) {
+            regs.add(0);
+        }
         pc = 0;
         running = true;
     }

@@ -130,7 +130,8 @@ public class Instruction {
                   return parBin;
               }
               public boolean getisJump() {
-                  return false; // Implementar
+                  
+                  return opcode >= 19 && opcode <= 21;
               }
               
                public String getFlagBinEntrada (){

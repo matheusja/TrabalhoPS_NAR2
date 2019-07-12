@@ -169,7 +169,7 @@ public class Montador
             {
                 Instruction inst = new Instruction();
                 inst.setOpBin(instructions.get(currentToken));
-                if(currentToken.equals("PZAF")) {
+                if(currentToken.equals("PZAF") || currentToken.equals("ZAR")) { // inverter o sinal do acumulador e parar a execução são intransitivos
                     codigoMontado.codigo.add(Translate.binToDecSigned(inst.getInstructionString()));
                     codigoMontado.relativo.add(Boolean.FALSE);
                     codigoMontado.ehInstrucao.add(Boolean.TRUE);

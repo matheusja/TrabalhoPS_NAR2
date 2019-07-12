@@ -58,7 +58,7 @@ public class Ligador {
             for (Integer n : codigoLinkado.tabelaDeUsos.get(simbolo)) {
                 Integer value = codigoLinkado.codigo.get(n);
                 value = correctVal(value, changeVal, codigoLinkado.ehInstrucao.get(n));
-                codigoLinkado.codigo.add(n, value);
+                codigoLinkado.codigo.set(n, value);
             }
         }
     }
