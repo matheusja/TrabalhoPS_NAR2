@@ -26,13 +26,24 @@ public class TesteMontador {
      */
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
-        ArrayList<CodigoMontado> mnt = new ArrayList<>();
+        //ArrayList<CodigoMontado> mnt = new ArrayList<>();
         CodigoMontado result = Montador.montar(TESTE1);
-        mnt.add(result);
+        /*mnt.add(result);
         result = Montador.montar(TESTE2);
         mnt.add(result);
         result = Ligador.ligar(mnt);
-        System.out.print(result.toString() + "\n\n");
+        System.out.print(result.toString() + "\n\n");*/
+        
+        Integer n = result.codigo.get(0);
+        System.out.println(n);
+        Instruction inst = Translate.decToStruct(n);
+        String str = inst.getInstructionString();
+        System.out.println(str);
+        n = Translate.binToDecUnsigned(str);
+        System.out.println(n);
+        str = Translate.decTobin(n);
+        System.out.println(str);
+        
     }
     
 }

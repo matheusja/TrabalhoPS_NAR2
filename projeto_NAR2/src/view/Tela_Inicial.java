@@ -84,7 +84,6 @@ public class Tela_Inicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(123, 123, 123));
-        setPreferredSize(new java.awt.Dimension(1300, 800));
 
         jTabbedPane1.setBackground(new java.awt.Color(123, 123, 123));
         jTabbedPane1.setForeground(new java.awt.Color(177, 177, 177));
